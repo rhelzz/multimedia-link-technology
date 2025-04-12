@@ -446,7 +446,7 @@
                     Temukan paket yang sesuai dengan kebutuhan Anda
                 </p>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                     <!-- Basic Package -->
                     <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 package-card 
                               transition-all">
@@ -563,6 +563,42 @@
                             Pilih Paket
                         </button>
                     </div>
+
+                    <!-- Premium Package -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 package-card transition-all">
+                        <div class="text-center mb-6">
+                            <span class="text-blue-600 font-semibold">PREMIUM</span>
+                            <h3 class="text-2xl md:text-3xl font-bold mt-2">Premium 200</h3>
+                            <div class="mt-4">
+                                <span class="text-3xl md:text-4xl font-bold">Rp599.000</span>
+                                <span class="text-gray-500">/bulan</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Kecepatan hingga 200 Mbps</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Unlimited Kuota</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Enterprise Router</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Dedicated Premium Support</span>
+                            </li>
+                        </ul>
+                        
+                        <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                            Pilih Paket
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </section>
