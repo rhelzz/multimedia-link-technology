@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>DeltaNet - Internet Fiber Premium Indonesia</title>
+        <title>Multimedia Link Technology - Internet Fiber Premium Indonesia</title>
         
         <!-- External CSS -->
         <script src="https://cdn.tailwindcss.com"></script>
@@ -157,6 +157,55 @@
             .slider-dot:hover {
                 background-color: rgba(255, 255, 255, 0.8);
             }
+
+            @keyframes scroll {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-200px * 6));
+                }
+            }
+
+            .animate-scroll {
+                animation: scroll 30s linear infinite;
+            }
+
+            /* Hover effect to pause animation */
+            .animate-scroll:hover {
+                animation-play-state: paused;
+            }
+
+            @keyframes testimonialScroll {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-300px * 3));
+                }
+            }
+
+            .testimonial-scroll {
+                animation: testimonialScroll 30s linear infinite;
+                display: flex;
+                gap: 2rem;
+                padding: 3rem 0;
+            }
+
+            .testimonial-scroll:hover {
+                animation-play-state: paused;
+            }
+
+            @media (min-width: 768px) {
+                @keyframes testimonialScroll {
+                    0% {
+                        transform: translateX(0);
+                    }
+                    100% {
+                        transform: translateX(calc(-400px * 3));
+                    }
+                }
+            }
         </style>
     </head>
     <body class="bg-gray-50 text-gray-800">
@@ -168,7 +217,7 @@
                     <!-- Logo -->
                     <div class="flex items-center">
                         <img src="https://placehold.co/40x40/0066ff/ffffff?text=M" 
-                            alt="DeltaNet Logo" 
+                            alt="Multimedia Link Technology Logo" 
                             class="h-8 w-8 sm:h-10 sm:w-10 rounded-lg">
                         <span class="nav-brand text-xl sm:text-2xl font-bold text-white ml-3">
                             Multimedia Link Technology
@@ -179,27 +228,27 @@
                     <nav id="navMenu" class="hidden md:flex items-center">
                         <div class="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0">
                             <div class="md:flex md:items-center md:space-x-5"> <!-- Mengubah space-x-8 menjadi space-x-5 -->
-                                <a href="#promo" 
-                                class="nav-link relative text-gray-800 md:text-white 
-                                        hover:text-orange-500 transition-colors px-3 py-2"> <!-- Mengubah padding-x -->
-                                    <i class="fas fa-tag mr-2"></i>Promo
-                                </a>
-                                <a href="#produk" 
+                                <a href="#" 
                                 class="nav-link relative text-gray-800 md:text-white 
                                         hover:text-orange-500 transition-colors px-3 py-2">
-                                    <i class="fas fa-box mr-2"></i>Produk
+                                    <i class="fas fa-tag mr-2"></i>Promo
                                 </a>
-                                <a href="#lokasi" 
+                                <a href="#layanan" 
+                                class="nav-link relative text-gray-800 md:text-white 
+                                        hover:text-orange-500 transition-colors px-3 py-2">
+                                    <i class="fas fa-briefcase mr-2"></i>Layanan
+                                </a>
+                                <a href="#" 
                                 class="nav-link relative text-gray-800 md:text-white 
                                         hover:text-orange-500 transition-colors px-3 py-2">
                                     <i class="fas fa-map-marker-alt mr-2"></i>Lokasi Area
                                 </a>
-                                <a href="#bantuan" 
+                                <a href="#dukungan" 
                                 class="nav-link relative text-gray-800 md:text-white 
                                         hover:text-orange-500 transition-colors px-3 py-2">
                                     <i class="fas fa-headset mr-2"></i>Bantuan & Dukungan
                                 </a>
-                                <a href="#konten" 
+                                <a href="#kontak" 
                                 class="nav-link relative text-gray-800 md:text-white 
                                         hover:text-orange-500 transition-colors px-3 py-2">
                                     <i class="fa-solid fa-address-book mr-2"></i>Kontak
@@ -221,15 +270,15 @@
         <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.1)] z-50">
             <div class="flex justify-around items-center p-4">
                 <!-- Home -->
-                <a href="#" class="flex flex-col items-center text-blue-600">
+                <a href="#" class="flex flex-col items-center text-gray-600 hover:text-blue-600">
                     <i class="fas fa-home text-xl"></i>
                     <span class="text-xs mt-1">Home</span>
                 </a>
                 
                 <!-- Paket -->
-                <a href="#paket" class="flex flex-col items-center text-gray-600 hover:text-blue-600">
-                    <i class="fas fa-box text-xl"></i>
-                    <span class="text-xs mt-1">Paket</span>
+                <a href="#layanan" class="flex flex-col items-center text-gray-600 hover:text-blue-600">
+                    <i class="fas fa-briefcase text-xl"></i>
+                    <span class="text-xs mt-1">Layanan</span>
                 </a>
                 
                 <!-- Menu Button (Center) -->
@@ -437,7 +486,7 @@
         </section>
 
         <!-- Packages Section -->
-        <section id="paket" class="py-16 md:py-20 bg-gray-50">
+        <section class="py-16 md:py-20 bg-gray-50" id="layanan">
             <div class="container mx-auto px-4">
                 <h2 class="text-2xl md:text-3xl font-bold text-center mb-4">
                     Pilihan Paket Internet
@@ -728,6 +777,226 @@
             </div>
         </section>
 
+        <!-- Partners Section dengan Infinite Slider -->
+        <section class="py-16 md:py-20 bg-white overflow-hidden">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-4">
+                    Partner Kami
+                </h2>
+                <p class="text-center text-gray-600 mb-12">
+                    Berkolaborasi dengan perusahaan teknologi terkemuka untuk memberikan layanan terbaik
+                </p>
+
+                <!-- Slider Container -->
+                <div class="relative">
+                    <!-- First Slider (Original) -->
+                    <div class="flex animate-scroll">
+                        <!-- Google -->
+                        <div class="flex items-center justify-center min-w-[200px] px-8">
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" 
+                                alt="Google" 
+                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        </div>
+                        <!-- Microsoft -->
+                        <div class="flex items-center justify-center min-w-[200px] px-8">
+                            <img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" 
+                                alt="Microsoft" 
+                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        </div>
+                        <!-- Amazon -->
+                        <div class="flex items-center justify-center min-w-[200px] px-8">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" 
+                                alt="Amazon" 
+                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        </div>
+                        <!-- IBM -->
+                        <div class="flex items-center justify-center min-w-[200px] px-8">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png" 
+                                alt="IBM" 
+                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        </div>
+                        <!-- Intel -->
+                        <div class="flex items-center justify-center min-w-[200px] px-8">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Intel_logo_%282006-2020%29.svg/2560px-Intel_logo_%282006-2020%29.svg.png" 
+                                alt="Intel" 
+                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        </div>
+                        <!-- Cisco -->
+                        <div class="flex items-center justify-center min-w-[200px] px-8">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Cisco_logo_blue_2016.svg/2560px-Cisco_logo_blue_2016.svg.png" 
+                                alt="Cisco" 
+                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        </div>
+
+                        <!-- Duplicate for seamless loop -->
+                        <!-- Google -->
+                        <div class="flex items-center justify-center min-w-[200px] px-8">
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" 
+                                alt="Google" 
+                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        </div>
+                        <!-- Microsoft -->
+                        <div class="flex items-center justify-center min-w-[200px] px-8">
+                            <img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" 
+                                alt="Microsoft" 
+                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        </div>
+                        <!-- Amazon -->
+                        <div class="flex items-center justify-center min-w-[200px] px-8">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" 
+                                alt="Amazon" 
+                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        </div>
+                        <!-- IBM -->
+                        <div class="flex items-center justify-center min-w-[200px] px-8">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png" 
+                                alt="IBM" 
+                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        </div>
+                        <!-- Intel -->
+                        <div class="flex items-center justify-center min-w-[200px] px-8">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Intel_logo_%282006-2020%29.svg/2560px-Intel_logo_%282006-2020%29.svg.png" 
+                                alt="Intel" 
+                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        </div>
+                        <!-- Cisco -->
+                        <div class="flex items-center justify-center min-w-[200px] px-8">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Cisco_logo_blue_2016.svg/2560px-Cisco_logo_blue_2016.svg.png" 
+                                alt="Cisco" 
+                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-16 md:py-20 bg-gray-50 overflow-hidden">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-4">
+                    Testimonial
+                </h2>
+                <p class="text-center text-gray-600 mb-12">
+                    Apa kata mereka tentang layanan kami
+                </p>
+
+                <!-- Testimonial Slider Container -->
+                <div class="relative">
+                    <div class="flex testimonial-scroll">
+                        <!-- Original Testimonials -->
+                        <!-- Testimonial Card 1 -->
+                        <div class="min-w-[300px] md:min-w-[400px] px-6">
+                            <div class="bg-white rounded-xl p-8 relative">
+                                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&h=200&auto=format&fit=crop"
+                                        alt="Client 1"
+                                        class="w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover">
+                                </div>
+                                <div class="text-center pt-12">
+                                    <p class="text-gray-600 italic mb-4">
+                                        "Kecepatan internet yang luar biasa stabil dan customer service yang sangat responsif. Sangat membantu untuk kebutuhan bisnis saya."
+                                    </p>
+                                    <h4 class="font-semibold text-lg">John Doe</h4>
+                                    <p class="text-sm text-gray-500">CEO, Tech Startup</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial Card 2 -->
+                        <div class="min-w-[300px] md:min-w-[400px] px-6">
+                            <div class="bg-white rounded-xl p-8 relative">
+                                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&h=200&auto=format&fit=crop"
+                                        alt="Client 2"
+                                        class="w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover">
+                                </div>
+                                <div class="text-center pt-12">
+                                    <p class="text-gray-600 italic mb-4">
+                                        "Proses instalasi cepat dan teknisi sangat profesional. Koneksi stabil membantu saya bekerja dari rumah dengan lancar."
+                                    </p>
+                                    <h4 class="font-semibold text-lg">Sarah Johnson</h4>
+                                    <p class="text-sm text-gray-500">Digital Marketing Manager</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial Card 3 -->
+                        <div class="min-w-[300px] md:min-w-[400px] px-6">
+                            <div class="bg-white rounded-xl p-8 relative">
+                                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&h=200&auto=format&fit=crop"
+                                        alt="Client 3"
+                                        class="w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover">
+                                </div>
+                                <div class="text-center pt-12">
+                                    <p class="text-gray-600 italic mb-4">
+                                        "Layanan pelanggan 24/7 yang sangat membantu. Setiap kendala selalu diselesaikan dengan cepat dan profesional."
+                                    </p>
+                                    <h4 class="font-semibold text-lg">Michael Chen</h4>
+                                    <p class="text-sm text-gray-500">Game Developer</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Duplicate cards for infinite scroll -->
+                        <!-- Testimonial Card 1 (Duplicate) -->
+                        <div class="min-w-[300px] md:min-w-[400px] px-6">
+                            <div class="bg-white rounded-xl p-8 relative">
+                                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&h=200&auto=format&fit=crop"
+                                        alt="Client 1"
+                                        class="w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover">
+                                </div>
+                                <div class="text-center pt-12">
+                                    <p class="text-gray-600 italic mb-4">
+                                        "Kecepatan internet yang luar biasa stabil dan customer service yang sangat responsif. Sangat membantu untuk kebutuhan bisnis saya."
+                                    </p>
+                                    <h4 class="font-semibold text-lg">John Doe</h4>
+                                    <p class="text-sm text-gray-500">CEO, Tech Startup</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial Card 2 (Duplicate) -->
+                        <div class="min-w-[300px] md:min-w-[400px] px-6">
+                            <div class="bg-white rounded-xl p-8 relative">
+                                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&h=200&auto=format&fit=crop"
+                                        alt="Client 2"
+                                        class="w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover">
+                                </div>
+                                <div class="text-center pt-12">
+                                    <p class="text-gray-600 italic mb-4">
+                                        "Proses instalasi cepat dan teknisi sangat profesional. Koneksi stabil membantu saya bekerja dari rumah dengan lancar."
+                                    </p>
+                                    <h4 class="font-semibold text-lg">Sarah Johnson</h4>
+                                    <p class="text-sm text-gray-500">Digital Marketing Manager</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial Card 3 (Duplicate) -->
+                        <div class="min-w-[300px] md:min-w-[400px] px-6">
+                            <div class="bg-white rounded-xl p-8 relative">
+                                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&h=200&auto=format&fit=crop"
+                                        alt="Client 3"
+                                        class="w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover">
+                                </div>
+                                <div class="text-center pt-12">
+                                    <p class="text-gray-600 italic mb-4">
+                                        "Layanan pelanggan 24/7 yang sangat membantu. Setiap kendala selalu diselesaikan dengan cepat dan profesional."
+                                    </p>
+                                    <h4 class="font-semibold text-lg">Michael Chen</h4>
+                                    <p class="text-sm text-gray-500">Game Developer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section id="kontak" class="py-16 md:py-20 bg-white">
             <div class="container mx-auto px-4">
@@ -762,7 +1031,7 @@
                                 </div>
                                 <div>
                                     <h3 class="font-semibold">Email</h3>
-                                    <p class="text-gray-600">support@deltanet.id</p>
+                                    <p class="text-gray-600">support@multimedialinktechnology.id</p>
                                 </div>
                             </div>
                             
@@ -848,15 +1117,13 @@
         </section>
 
         <!-- Footer -->
-        <footer class="bg-gray-900 text-white py-12">
+        <footer class="bg-gray-900 text-white py-12" id="dukungan">
             <div class="container mx-auto px-4">
                 <!-- Footer Content Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                     <!-- Company Info -->
                     <div>
-                        <img src="https://placehold.co/120x40/0066ff/ffffff?text=DeltaNet" 
-                             alt="DeltaNet Logo" 
-                             class="mb-4">
+                        <h4 class="text-lg font-semibold mb-4">Multimedia Link Technology</h4>
                         <p class="text-gray-400">
                             Penyedia layanan internet fiber premium dengan kualitas terbaik 
                             untuk rumah dan bisnis Anda.
@@ -947,7 +1214,7 @@
                 
                 <!-- Copyright -->
                 <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                    <p>&copy; 2025 DeltaNet. All rights reserved.</p>
+                    <p>&copy; 2025 Multimedia Link Technology. All rights reserved.</p>
                 </div>
             </div>
         </footer>
