@@ -997,6 +997,107 @@
             </div>
         </section>
 
+        <!-- FAQ Section -->
+        <section class="py-16 md:py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-4">
+                    Pertanyaan yang Sering Ditanyakan
+                </h2>
+                <p class="text-center text-gray-600 mb-12">
+                    Temukan jawaban untuk pertanyaan yang sering diajukan
+                </p>
+
+                <!-- FAQ Container -->
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="border border-gray-200 rounded-lg">
+                        <button class="w-full flex items-center justify-between p-4 md:p-5 hover:bg-gray-50 transition-all" 
+                                onclick="toggleFAQ(this)">
+                            <span class="font-semibold text-left">Bagaimana cara berlangganan internet fiber?</span>
+                            <i class="fas fa-chevron-down transform transition-transform"></i>
+                        </button>
+                        <div class="hidden px-4 pb-4 md:px-5 md:pb-5">
+                            <p class="text-gray-600">
+                                Untuk berlangganan, Anda dapat mengikuti langkah berikut:
+                                <br>1. Pilih paket yang sesuai dengan kebutuhan Anda
+                                <br>2. Cek ketersediaan layanan di area Anda
+                                <br>3. Hubungi tim sales kami melalui WhatsApp atau telepon
+                                <br>4. Tim teknisi akan melakukan survei lokasi
+                                <br>5. Setelah disetujui, instalasi akan dilakukan dalam 24 jam
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="border border-gray-200 rounded-lg">
+                        <button class="w-full flex items-center justify-between p-4 md:p-5 hover:bg-gray-50 transition-all"
+                                onclick="toggleFAQ(this)">
+                            <span class="font-semibold text-left">Berapa lama proses instalasi internet?</span>
+                            <i class="fas fa-chevron-down transform transition-transform"></i>
+                        </button>
+                        <div class="hidden px-4 pb-4 md:px-5 md:pb-5">
+                            <p class="text-gray-600">
+                                Proses instalasi internet fiber kami maksimal 24 jam setelah survei lokasi disetujui. 
+                                Tim teknisi profesional kami akan melakukan instalasi dengan rapi dan bersih, serta 
+                                memastikan koneksi berfungsi dengan optimal sebelum menyelesaikan instalasi.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="border border-gray-200 rounded-lg">
+                        <button class="w-full flex items-center justify-between p-4 md:p-5 hover:bg-gray-50 transition-all"
+                                onclick="toggleFAQ(this)">
+                            <span class="font-semibold text-left">Apakah ada biaya instalasi?</span>
+                            <i class="fas fa-chevron-down transform transition-transform"></i>
+                        </button>
+                        <div class="hidden px-4 pb-4 md:px-5 md:pb-5">
+                            <p class="text-gray-600">
+                                Untuk pelanggan baru, kami memberikan promo GRATIS biaya instalasi dengan 
+                                syarat berlangganan minimal 6 bulan. Semua perangkat yang diperlukan untuk 
+                                instalasi juga kami sediakan tanpa biaya tambahan.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="border border-gray-200 rounded-lg">
+                        <button class="w-full flex items-center justify-between p-4 md:p-5 hover:bg-gray-50 transition-all"
+                                onclick="toggleFAQ(this)">
+                            <span class="font-semibold text-left">Bagaimana jika terjadi gangguan internet?</span>
+                            <i class="fas fa-chevron-down transform transition-transform"></i>
+                        </button>
+                        <div class="hidden px-4 pb-4 md:px-5 md:pb-5">
+                            <p class="text-gray-600">
+                                Kami menyediakan layanan customer service 24/7 yang siap membantu jika terjadi gangguan. 
+                                Anda dapat menghubungi kami melalui:
+                                <br>- Call Center: 1500-XXX
+                                <br>- WhatsApp: 0812-XXXX-XXXX
+                                <br>- Email: support@multimedia-link.com
+                                <br>Tim teknisi kami akan merespon maksimal 2 jam setelah laporan diterima.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="border border-gray-200 rounded-lg">
+                        <button class="w-full flex items-center justify-between p-4 md:p-5 hover:bg-gray-50 transition-all"
+                                onclick="toggleFAQ(this)">
+                            <span class="font-semibold text-left">Apakah bisa upgrade/downgrade paket?</span>
+                            <i class="fas fa-chevron-down transform transition-transform"></i>
+                        </button>
+                        <div class="hidden px-4 pb-4 md:px-5 md:pb-5">
+                            <p class="text-gray-600">
+                                Ya, Anda dapat melakukan upgrade atau downgrade paket sewaktu-waktu dengan 
+                                menghubungi customer service kami. Perubahan paket akan efektif pada periode 
+                                tagihan berikutnya tanpa biaya tambahan.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section id="kontak" class="py-16 md:py-20 bg-white">
             <div class="container mx-auto px-4">
@@ -1404,5 +1505,35 @@
                 }
             });
         </script>
+        <script>
+            function toggleFAQ(element) {
+                // Toggle active state
+                element.classList.toggle('active');
+                
+                // Get the content panel
+                const content = element.nextElementSibling;
+                
+                // Toggle the chevron icon
+                const icon = element.querySelector('.fa-chevron-down');
+                icon.style.transform = content.classList.contains('hidden') ? 'rotate(180deg)' : 'rotate(0)';
+                
+                // Toggle the content visibility
+                content.classList.toggle('hidden');
+                
+                // Close other FAQs
+                const allFAQs = document.querySelectorAll('.border.border-gray-200.rounded-lg');
+                allFAQs.forEach(faq => {
+                    const faqButton = faq.querySelector('button');
+                    const faqContent = faq.querySelector('div[class*="hidden"]');
+                    const faqIcon = faq.querySelector('.fa-chevron-down');
+                    
+                    if (faqButton !== element && faqContent) {
+                        faqContent.classList.add('hidden');
+                        faqIcon.style.transform = 'rotate(0)';
+                        faqButton.classList.remove('active');
+                    }
+                });
+            }
+            </script>
     </body>
 </html>
