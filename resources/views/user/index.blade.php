@@ -21,172 +21,368 @@
             body {
                 font-family: 'Inter', sans-serif;
             }
-
-            /* Components */
-            .hero-gradient {
-                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
-            }
-
-            /* Animations */
-            .transition-all {
+    
+            /* Navbar Styles */
+            .navbar-fixed {
                 transition: all 0.3s ease;
             }
 
-            .package-card:hover {
-                transform: translateY(-5px);
+            .navbar-fixed.scrolled {
+                background-color: white;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             }
 
-            /* Desktop Navigation Update */
+            .nav-link {
+                transition: all 0.3s ease;
+                position: relative;
+                font-weight: 500;
+            }
+    
+            /* Mobile Menu */
+            .mobile-menu {
+                transform: translateY(-100%);
+                transition: all 0.3s ease;
+            }
+    
+            .mobile-menu.show {
+                transform: translateY(0);
+            }
+    
             @media (min-width: 768px) {
-                .nav-link {
-                    position: relative;
-                    padding: 0.5rem 1rem;
-                }
-                
                 .nav-link::after {
                     content: '';
                     position: absolute;
                     bottom: -2px;
                     left: 50%;
-                    transform: translateX(-50%);
                     width: 0;
                     height: 2px;
-                    background-color: #2563eb;
-                    transition: width 0.3s ease;
+                    background-color: currentColor;
+                    transition: all 0.3s ease;
+                    transform: translateX(-50%);
                 }
-                
+    
                 .nav-link:hover::after {
                     width: 100%;
                 }
-                
-                #mobileMenu {
-                    box-shadow: none !important;
+    
+                .mobile-menu {
+                    transform: none;
                 }
             }
 
-            /* Mobile Menu */
-            #mobileMenu {
+            /* Add to your existing styles section */
+            @media (max-width: 768px) {
+                body {
+                    padding-bottom: 4rem; /* Add padding to account for bottom navigation */
+                }
+                
+                /* Mobile menu transition */
+                #mobileMenuOverlay > div {
+                    transition: transform 0.3s ease-in-out;
+                }
+                
+                /* Active state for bottom nav items */
+                .bottom-nav-item.active {
+                    color: #2563eb; /* blue-600 */
+                }
+            }
+    
+            /* Custom Styles */
+            .hero-gradient {
+                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+            }
+    
+            .package-card {
                 transition: all 0.3s ease;
             }
+    
+            .package-card:hover {
+                transform: translateY(-5px);
+            }
 
-            /* Responsive improvements */
-            @media (max-width: 768px) {
-                .container {
-                    padding-left: 1rem;
-                    padding-right: 1rem;
-                }
-                
-                section {
-                    padding-top: 4rem;
-                    padding-bottom: 4rem;
-                }
-                
-                p {
-                    font-size: 1rem;
-                    line-height: 1.5;
-                }
-                
-                button, 
-                a {
-                    min-height: 44px;
-                    padding: 0.75rem 1rem;
-                }
-                
-                input, 
-                textarea {
-                    font-size: 16px !important;
-                }
+            /* Slider Styles */
+            .slider-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .slide {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                transition: opacity 1s ease-in-out;
+                background-size: cover;
+                background-position: center;
+            }
+
+            .slide.active {
+                opacity: 1;
+            }
+
+            /* Slider Navigation */
+            .slider-nav {
+                position: absolute;
+                bottom: 2rem;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 0.35rem; /* Mengurangi gap antar dot */
+                z-index: 20;
+            }
+
+            .slider-dot {
+                width: 0.5rem; /* Mengecilkan ukuran dot dari 0.75rem */
+                height: 0.5rem; /* Mengecilkan ukuran dot dari 0.75rem */
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.3); /* Membuat inactive dot lebih transparan */
+                cursor: pointer;
+                transition: all 0.3s ease;
+                border: 1px solid rgba(255, 255, 255, 0.5); /* Menambahkan border tipis */
+            }
+
+            .slider-dot.active {
+                background-color: white;
+                transform: scale(1.1); /* Mengurangi scale effect dari 1.2 */
+                width: 1rem; /* Membuat dot aktif sedikit lebih panjang */
+                border-radius: 4px; /* Membuat dot aktif sedikit rounded rectangle */
+            }
+
+            /* Hover effect untuk dot */
+            .slider-dot:hover {
+                background-color: rgba(255, 255, 255, 0.8);
             }
         </style>
     </head>
     <body class="bg-gray-50 text-gray-800">
         <!-- Navigation -->
-        <header class="bg-white shadow-lg fixed top-0 w-full z-50">
-            <div class="container mx-auto px-4 py-3">
-                <div class="flex justify-between items-center">
+        <header class="navbar-fixed fixed top-0 w-full z-50 hidden md:block" id="navbar">
+            <!-- Add hidden md:block class to hide on mobile and show on desktop -->
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
                     <!-- Logo -->
                     <div class="flex items-center">
-                        <img src="https://placehold.co/40x40/0066ff/ffffff?text=D" 
-                             alt="DeltaNet Logo" 
-                             class="h-8 w-8 sm:h-10 sm:w-10 rounded-lg">
-                        <span class="text-xl sm:text-2xl font-bold text-blue-600 ml-2">DeltaNet</span>
+                        <img src="https://placehold.co/40x40/0066ff/ffffff?text=M" 
+                            alt="DeltaNet Logo" 
+                            class="h-8 w-8 sm:h-10 sm:w-10 rounded-lg">
+                        <span class="nav-brand text-xl sm:text-2xl font-bold text-white ml-3">
+                            Multimedia Link Technology
+                        </span>
                     </div>
-                    
-                    <!-- Mobile Menu Button -->
-                    <button class="md:hidden text-gray-500 hover:text-blue-600" 
-                            onclick="toggleMobileMenu()">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
 
-                    <!-- Desktop Navigation -->
-                    <nav id="mobileMenu" 
-                         class="hidden absolute md:relative top-full left-0 w-full md:w-auto 
-                                bg-white md:bg-transparent md:flex items-center md:space-x-6 
-                                shadow-lg md:shadow-none">
-                        <div class="flex flex-col md:flex-row w-full md:w-auto md:items-center 
-                                  md:space-x-6">
-                            <a href="#promo" 
-                               class="nav-link p-4 md:p-2 text-gray-600 hover:text-blue-600 
-                                      transition-colors border-b md:border-0 border-gray-100">
-                                <i class="fas fa-tag mr-1"></i> Promo
-                            </a>
-                            <a href="#paket" 
-                               class="nav-link p-4 md:p-2 text-gray-600 hover:text-blue-600 
-                                      transition-colors border-b md:border-0 border-gray-100">
-                                <i class="fas fa-box mr-1"></i> Paket
-                            </a>
-                            <a href="#lokasi" 
-                               class="nav-link p-4 md:p-2 text-gray-600 hover:text-blue-600 
-                                      transition-colors border-b md:border-0 border-gray-100">
-                                <i class="fas fa-map-marker-alt mr-1"></i> Area
-                            </a>
-                            <a href="#dukungan" 
-                               class="nav-link p-4 md:p-2 text-gray-600 hover:text-blue-600 
-                                      transition-colors border-b md:border-0 border-gray-100">
-                                <i class="fas fa-headset mr-1"></i> Bantuan
-                            </a>
-                            <a href="#member" 
-                               class="md:ml-4 p-4 md:p-2 bg-blue-600 text-white md:px-6 
-                                      md:py-2 rounded-none md:rounded-full hover:bg-blue-700 
-                                      transition-colors flex items-center justify-center">
-                                <i class="fas fa-user mr-2"></i> Member Area
-                            </a>
+                    <!-- Navigation Menu -->
+                    <nav id="navMenu" class="hidden md:flex items-center">
+                        <div class="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0">
+                            <div class="md:flex md:items-center md:space-x-5"> <!-- Mengubah space-x-8 menjadi space-x-5 -->
+                                <a href="#promo" 
+                                class="nav-link relative text-gray-800 md:text-white 
+                                        hover:text-orange-500 transition-colors px-3 py-2"> <!-- Mengubah padding-x -->
+                                    <i class="fas fa-tag mr-2"></i>Promo
+                                </a>
+                                <a href="#produk" 
+                                class="nav-link relative text-gray-800 md:text-white 
+                                        hover:text-orange-500 transition-colors px-3 py-2">
+                                    <i class="fas fa-box mr-2"></i>Produk
+                                </a>
+                                <a href="#lokasi" 
+                                class="nav-link relative text-gray-800 md:text-white 
+                                        hover:text-orange-500 transition-colors px-3 py-2">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>Lokasi Area
+                                </a>
+                                <a href="#bantuan" 
+                                class="nav-link relative text-gray-800 md:text-white 
+                                        hover:text-orange-500 transition-colors px-3 py-2">
+                                    <i class="fas fa-headset mr-2"></i>Bantuan & Dukungan
+                                </a>
+                                <a href="#konten" 
+                                class="nav-link relative text-gray-800 md:text-white 
+                                        hover:text-orange-500 transition-colors px-3 py-2">
+                                    <i class="fa-solid fa-address-book mr-2"></i>Kontak
+                                </a>
+                                <a href="#member" 
+                                class="bg-orange-500 text-white px-6 py-2 rounded-full 
+                                        hover:bg-orange-600 transition-colors ml-3 inline-flex items-center">
+                                    <!-- Mengubah padding dan margin -->
+                                    <i class="fas fa-user mr-2"></i>My Member
+                                </a>
+                            </div>
                         </div>
                     </nav>
                 </div>
             </div>
         </header>
 
+        <!-- Mobile Navigation (Add this just after the header) -->
+        <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.1)] z-50">
+            <div class="flex justify-around items-center p-4">
+                <!-- Home -->
+                <a href="#" class="flex flex-col items-center text-blue-600">
+                    <i class="fas fa-home text-xl"></i>
+                    <span class="text-xs mt-1">Home</span>
+                </a>
+                
+                <!-- Paket -->
+                <a href="#paket" class="flex flex-col items-center text-gray-600 hover:text-blue-600">
+                    <i class="fas fa-box text-xl"></i>
+                    <span class="text-xs mt-1">Paket</span>
+                </a>
+                
+                <!-- Menu Button (Center) -->
+                <button id="mobileMenuBtn" class="flex flex-col items-center -mt-8 relative">
+                    <div class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-lg text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </div>
+                    <span class="text-xs mt-1 text-gray-600">Menu</span>
+                </button>
+                
+                <!-- Area -->
+                <a href="#lokasi" class="flex flex-col items-center text-gray-600 hover:text-blue-600">
+                    <i class="fas fa-map-marker-alt text-xl"></i>
+                    <span class="text-xs mt-1">Area</span>
+                </a>
+                
+                <!-- Contact -->
+                <a href="#kontak" class="flex flex-col items-center text-gray-600 hover:text-blue-600">
+                    <i class="fas fa-headset text-xl"></i>
+                    <span class="text-xs mt-1">Kontak</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+            <div class="fixed bottom-24 left-4 right-4 bg-white rounded-xl shadow-xl p-4 transform transition-transform duration-300 translate-y-full">
+                <div class="grid grid-cols-3 gap-4">
+                    <!-- Menu Items -->
+                    <a href="#promo" class="flex flex-col items-center p-4 text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-tag text-xl mb-2"></i>
+                        <span class="text-sm">Promo</span>
+                    </a>
+                    <a href="#bantuan" class="flex flex-col items-center p-4 text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-question-circle text-xl mb-2"></i>
+                        <span class="text-sm">Bantuan</span>
+                    </a>
+                    <a href="#member" class="flex flex-col items-center p-4 text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-user text-xl mb-2"></i>
+                        <span class="text-sm">Member</span>
+                    </a>
+                    <a href="#faq" class="flex flex-col items-center p-4 text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-info-circle text-xl mb-2"></i>
+                        <span class="text-sm">FAQ</span>
+                    </a>
+                    <a href="#privacy" class="flex flex-col items-center p-4 text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-shield-alt text-xl mb-2"></i>
+                        <span class="text-sm">Privacy</span>
+                    </a>
+                    <a href="#terms" class="flex flex-col items-center p-4 text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-file-contract text-xl mb-2"></i>
+                        <span class="text-sm">Terms</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <!-- Hero Section -->
-        <section class="min-h-screen pt-20 md:pt-24 pb-16 md:pb-20 bg-cover bg-center relative" 
-                 style="background-image: url('https://placehold.co/1920x1080/0066ff/ffffff?text=High-Speed+Internet')">
+        <section class="min-h-screen pt-16 md:pt-24 pb-12 md:pb-20 bg-cover bg-center relative">
+            <!-- Slider Container (tetap sama) -->
+            <div class="slider-container" id="heroSlider">
+                <div class="slide active" 
+                    style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop')">
+                </div>
+                <div class="slide" 
+                    style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1920&auto=format&fit=crop')">
+                </div>
+                <div class="slide" 
+                    style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1920&auto=format&fit=crop')">
+                </div>
+            </div>
+            
+            <!-- Slider Navigation (tetap sama) -->
+            <div class="slider-nav">
+                <div class="slider-dot active" data-slide="0"></div>
+                <div class="slider-dot" data-slide="1"></div>
+                <div class="slider-dot" data-slide="2"></div>
+            </div>
+
             <div class="hero-gradient absolute inset-0"></div>
-            <div class="container mx-auto px-4 relative z-10 text-white">
-                <div class="min-h-[calc(100vh-200px)] flex items-center">
-                    <div class="max-w-3xl text-left">
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 leading-tight">
-                            Internet Fiber Premium untuk Kebutuhan Digital Anda
+            <div class="container mx-auto px-6 relative z-10 text-white">
+                <div class="min-h-[calc(100vh-200px)] flex items-center md:pl-10">
+                    <div class="max-w-3xl text-left space-y-5 md:space-y-6"> <!-- Mengurangi space-y -->
+                        <!-- Hero Title -->
+                        <h1 class="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight"> <!-- Mengurangi ukuran font untuk desktop -->
+                            Internet Fiber Premium 
+                            <span class="block mt-1 md:mt-2">untuk Kebutuhan Digital Anda</span> <!-- Mengurangi margin top -->
                         </h1>
-                        <p class="text-lg sm:text-xl md:text-2xl mb-6 md:mb-8 text-gray-200">
-                            Nikmati kecepatan hingga 100 Mbps dengan stabilitas tinggi
-                            <span class="block mt-2 text-yellow-400 font-semibold text-xl md:text-2xl">
-                                Mulai dari Rp199.000/bulan
-                            </span>
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4">
+                        
+                        <!-- Hero Description -->
+                        <div class="space-y-3"> <!-- Mengurangi space-y -->
+                            <p class="text-base sm:text-lg md:text-lg text-gray-100 leading-relaxed max-w-2xl"> <!-- Menambah max-width dan mengurangi ukuran font -->
+                                Nikmati kecepatan hingga 100 Mbps dengan stabilitas tinggi
+                            </p>
+                            <p class="inline-block px-4 py-2 bg-black/30 backdrop-blur-sm rounded-lg">
+                                <span class="text-yellow-400 font-semibold text-base sm:text-lg md:text-xl"> <!-- Mengurangi ukuran font -->
+                                    Mulai dari Rp199.000/bulan
+                                </span>
+                            </p>
+                        </div>
+                        
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-3"> <!-- Mengurangi gap dan padding -->
                             <a href="#paket" 
-                               class="w-full sm:w-auto text-center bg-blue-600 hover:bg-blue-700 
-                                      px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg 
-                                      font-semibold transition-all transform hover:scale-105">
+                            class="w-full sm:w-auto text-center bg-blue-600 hover:bg-blue-700 
+                                    px-6 py-2.5 sm:py-3 rounded-xl text-base font-semibold 
+                                    transition-all transform hover:scale-105
+                                    hover:shadow-lg shadow-md">
                                 <i class="fas fa-rocket mr-2"></i> Pilih Paket
                             </a>
                             <a href="#cek-area" 
-                               class="w-full sm:w-auto text-center border-2 border-white px-6 
-                                      sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg 
-                                      font-semibold hover:bg-white hover:text-blue-600 
-                                      transition-all">
+                            class="w-full sm:w-auto text-center border-2 border-white/80 
+                                    px-6 py-2.5 sm:py-3 rounded-xl text-base
+                                    font-semibold hover:bg-white hover:text-blue-600 
+                                    transition-all hover:shadow-lg shadow-md
+                                    bg-white/10 backdrop-blur-sm">
                                 <i class="fas fa-map-marker-alt mr-2"></i> Cek Ketersediaan
                             </a>
+                        </div>
+                        
+                        <!-- Feature Tags -->
+                        <div class="flex flex-wrap gap-3 pt-5 text-sm"> <!-- Mengurangi gap dan padding -->
+                            <span class="bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full 
+                                    border border-white/20 flex items-center gap-2">
+                                <i class="fas fa-check text-green-400"></i>
+                                Instalasi Cepat 24 Jam
+                            </span>
+                            <span class="bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full 
+                                    border border-white/20 flex items-center gap-2">
+                                <i class="fas fa-check text-green-400"></i>
+                                Gratis Biaya Admin
+                            </span>
+                            <span class="bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full 
+                                    border border-white/20 flex items-center gap-2">
+                                <i class="fas fa-check text-green-400"></i>
+                                Free Setup Modem WiFi
+                            </span>
+                        </div>
+
+                        <!-- Trust Indicators -->
+                        <div class="pt-6 flex flex-wrap gap-5 items-center text-sm"> <!-- Mengurangi padding dan ukuran font -->
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span>4.9/5 Rating Pelanggan</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-users text-blue-400"></i>
+                                <span>10.000+ Pelanggan Aktif</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-shield-alt text-green-400"></i>
+                                <span>Jaminan Uang Kembali</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -275,6 +471,10 @@
                             <li class="flex items-center">
                                 <i class="fas fa-check-circle text-green-500 mr-2"></i>
                                 <span>Free Modem WiFi</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-circle-xmark text-red-500 mr-2"></i>
+                                <span>Prioritas Support</span>
                             </li>
                         </ul>
                         
@@ -593,10 +793,188 @@
 
         <!-- Mobile Menu Script -->
         <script>
-            function toggleMobileMenu() {
-                const menu = document.getElementById('mobileMenu');
-                menu.classList.toggle('hidden');
-            }
+            document.addEventListener('DOMContentLoaded', function() {
+                const navbar = document.getElementById('navbar');
+                const heroSection = document.querySelector('section');
+                const memberButton = document.querySelector('a[href="#member"]');
+                
+                // Handle scroll untuk navbar desktop
+                function handleScroll() {
+                    const heroHeight = heroSection.offsetHeight;
+                    const scrollPosition = window.pageYOffset;
+                    const threshold = heroHeight * 0.125;
+
+                    if (scrollPosition > threshold) {
+                        navbar.classList.add('scrolled');
+                        // Ubah warna nav links
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('md:text-white', 'text-gray-800');
+                            link.classList.add('text-blue-600');
+                            link.style.color = '#2563eb';
+                        });
+                        // Ubah warna brand
+                        document.querySelector('.nav-brand').classList.remove('text-white');
+                        document.querySelector('.nav-brand').classList.add('text-blue-600');
+                        
+                        // Ubah warna member area button
+                        memberButton.classList.remove('bg-orange-500', 'hover:bg-orange-600');
+                        memberButton.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                        // Kembalikan warna nav links
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.add('md:text-white');
+                            link.classList.remove('text-blue-600');
+                            link.style.removeProperty('color');
+                        });
+                        // Kembalikan warna brand
+                        document.querySelector('.nav-brand').classList.add('text-white');
+                        document.querySelector('.nav-brand').classList.remove('text-blue-600');
+                        
+                        // Kembalikan warna member area button
+                        memberButton.classList.add('bg-orange-500', 'hover:bg-orange-600');
+                        memberButton.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                    }
+                }
+
+                // Listen for scroll and resize events
+                window.addEventListener('scroll', handleScroll);
+                window.addEventListener('resize', handleScroll);
+                
+                // Initial check
+                handleScroll();
+            });
+        </script>
+        <script>
+            // Mobile Bottom Navigation Menu Handler
+            document.addEventListener('DOMContentLoaded', function() {
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+                const menuContent = mobileMenuOverlay.querySelector('div.bg-white');
+                
+                // Function to open menu
+                function openMenu() {
+                    mobileMenuOverlay.classList.remove('hidden');
+                    // Reset the transform first to trigger the animation
+                    menuContent.style.transform = 'translateY(100%)';
+                    setTimeout(() => {
+                        menuContent.style.transform = 'translateY(0)';
+                    }, 10);
+                }
+                
+                // Function to close menu
+                function closeMenu() {
+                    menuContent.style.transform = 'translateY(100%)';
+                    setTimeout(() => {
+                        mobileMenuOverlay.classList.add('hidden');
+                    }, 300);
+                }
+                
+                // Toggle menu on button click
+                mobileMenuBtn.addEventListener('click', function() {
+                    if (mobileMenuOverlay.classList.contains('hidden')) {
+                        openMenu();
+                    } else {
+                        closeMenu();
+                    }
+                });
+                
+                // Close menu when clicking overlay
+                mobileMenuOverlay.addEventListener('click', function(e) {
+                    if (e.target === mobileMenuOverlay) {
+                        closeMenu();
+                    }
+                });
+                
+                // Prevent scroll when menu is open
+                mobileMenuOverlay.addEventListener('touchmove', function(e) {
+                    e.preventDefault();
+                }, { passive: false });
+                
+                // Close menu on menu item click
+                const menuItems = mobileMenuOverlay.querySelectorAll('a');
+                menuItems.forEach(item => {
+                    item.addEventListener('click', closeMenu);
+                });
+            });
+        </script>
+        <script>
+            // Hero Slider
+            document.addEventListener('DOMContentLoaded', function() {
+                const slides = document.querySelectorAll('.slide');
+                const dots = document.querySelectorAll('.slider-dot');
+                let currentSlide = 0;
+                const slideInterval = 5000; // Change slide every 5 seconds
+                
+                function goToSlide(n) {
+                    // Remove active class from current slide and dot
+                    slides[currentSlide].classList.remove('active');
+                    dots[currentSlide].classList.remove('active');
+                    
+                    // Update current slide
+                    currentSlide = (n + slides.length) % slides.length;
+                    
+                    // Add active class to new slide and dot
+                    slides[currentSlide].classList.add('active');
+                    dots[currentSlide].classList.add('active');
+                }
+                
+                function nextSlide() {
+                    goToSlide(currentSlide + 1);
+                }
+                
+                // Auto advance slides
+                let slideTimer = setInterval(nextSlide, slideInterval);
+                
+                // Click handlers for dots
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        clearInterval(slideTimer);
+                        goToSlide(index);
+                        slideTimer = setInterval(nextSlide, slideInterval);
+                    });
+                });
+                
+                // Optional: Pause on hover
+                const sliderContainer = document.getElementById('heroSlider');
+                
+                sliderContainer.addEventListener('mouseenter', () => {
+                    clearInterval(slideTimer);
+                });
+                
+                sliderContainer.addEventListener('mouseleave', () => {
+                    slideTimer = setInterval(nextSlide, slideInterval);
+                });
+                
+                // Optional: Swipe support for mobile
+                let touchStartX = 0;
+                let touchEndX = 0;
+                
+                sliderContainer.addEventListener('touchstart', e => {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, false);
+                
+                sliderContainer.addEventListener('touchend', e => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, false);
+                
+                function handleSwipe() {
+                    const swipeThreshold = 50;
+                    if (touchEndX < touchStartX - swipeThreshold) {
+                        // Swipe left
+                        clearInterval(slideTimer);
+                        nextSlide();
+                        slideTimer = setInterval(nextSlide, slideInterval);
+                    }
+                    if (touchEndX > touchStartX + swipeThreshold) {
+                        // Swipe right
+                        clearInterval(slideTimer);
+                        goToSlide(currentSlide - 1);
+                        slideTimer = setInterval(nextSlide, slideInterval);
+                    }
+                }
+            });
         </script>
     </body>
 </html>
