@@ -1111,39 +1111,39 @@
                             bawah ini.
                         </p>
                         
-                        <div class="space-y-4">
+                        <div class="space-y-6">
                             <!-- Phone -->
-                            <div class="flex items-center">
-                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center 
-                                          justify-center mr-4">
-                                    <i class="fas fa-phone text-blue-600"></i>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center 
+                                        justify-center mr-5 flex-shrink-0">
+                                    <i class="fas fa-phone text-blue-600 text-xl"></i>
                                 </div>
-                                <div>
-                                    <h3 class="font-semibold">Telepon</h3>
+                                <div class="pt-1">
+                                    <h3 class="font-semibold text-lg mb-1">Telepon</h3>
                                     <p class="text-gray-600">0800-1234-5678</p>
                                 </div>
                             </div>
                             
                             <!-- Email -->
-                            <div class="flex items-center">
-                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center 
-                                          justify-center mr-4">
-                                    <i class="fas fa-envelope text-blue-600"></i>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center 
+                                        justify-center mr-5 flex-shrink-0">
+                                    <i class="fas fa-envelope text-blue-600 text-xl"></i>
                                 </div>
-                                <div>
-                                    <h3 class="font-semibold">Email</h3>
+                                <div class="pt-1">
+                                    <h3 class="font-semibold text-lg mb-1">Email</h3>
                                     <p class="text-gray-600">support@multimedialinktechnology.id</p>
                                 </div>
                             </div>
                             
                             <!-- Address -->
-                            <div class="flex items-center">
-                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center 
-                                          justify-center mr-4">
-                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center 
+                                        justify-center mr-5 flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-blue-600 text-xl"></i>
                                 </div>
-                                <div>
-                                    <h3 class="font-semibold">Alamat</h3>
+                                <div class="pt-1">
+                                    <h3 class="font-semibold text-lg mb-1">Alamat</h3>
                                     <p class="text-gray-600">Jl. Internet Cepat No. 88, Jakarta</p>
                                 </div>
                             </div>
@@ -1160,10 +1160,10 @@
                                         Nama Lengkap
                                     </label>
                                     <input type="text" 
-                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 
-                                                  focus:ring-2 focus:ring-blue-600 
-                                                  focus:border-transparent transition-all"
-                                           placeholder="Masukkan nama lengkap Anda">
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 
+                                                focus:ring-2 focus:ring-blue-600 
+                                                focus:border-transparent transition-all"
+                                        placeholder="Masukkan nama lengkap Anda">
                                 </div>
                                 
                                 <!-- Email Field -->
@@ -1172,10 +1172,10 @@
                                         Email
                                     </label>
                                     <input type="email" 
-                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 
-                                                  focus:ring-2 focus:ring-blue-600 
-                                                  focus:border-transparent transition-all"
-                                           placeholder="email@example.com">
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 
+                                                focus:ring-2 focus:ring-blue-600 
+                                                focus:border-transparent transition-all"
+                                        placeholder="email@example.com">
                                 </div>
                                 
                                 <!-- Phone Field -->
@@ -1184,10 +1184,10 @@
                                         Nomor Telepon
                                     </label>
                                     <input type="tel" 
-                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 
-                                                  focus:ring-2 focus:ring-blue-600 
-                                                  focus:border-transparent transition-all"
-                                           placeholder="08xxxxxxxxxx">
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 
+                                                focus:ring-2 focus:ring-blue-600 
+                                                focus:border-transparent transition-all"
+                                        placeholder="08xxxxxxxxxx">
                                 </div>
                                 
                                 <!-- Message Field -->
@@ -1197,8 +1197,8 @@
                                     </label>
                                     <textarea 
                                         class="w-full px-4 py-3 rounded-lg border border-gray-300 
-                                               focus:ring-2 focus:ring-blue-600 
-                                               focus:border-transparent transition-all"
+                                            focus:ring-2 focus:ring-blue-600 
+                                            focus:border-transparent transition-all"
                                         rows="4"
                                         placeholder="Tuliskan pesan Anda di sini...">
                                     </textarea>
@@ -1207,7 +1207,7 @@
                                 <!-- Submit Button -->
                                 <button type="submit" 
                                         class="w-full bg-blue-600 text-white py-3 rounded-lg 
-                                               hover:bg-blue-700 transition-colors">
+                                            hover:bg-blue-700 transition-colors">
                                     Kirim Pesan
                                 </button>
                             </div>
