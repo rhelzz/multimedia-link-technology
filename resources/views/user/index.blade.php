@@ -8,205 +8,13 @@
         <!-- External CSS -->
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+        <!-- Di bagian head, tambahkan setelah external CSS yang ada -->
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         
-        <!-- Custom Styles -->
-        <style>
-            /* Typography */
-            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-            
-            html {
-                scroll-behavior: smooth;
-            }
-            
-            body {
-                font-family: 'Inter', sans-serif;
-            }
-    
-            /* Navbar Styles */
-            .navbar-fixed {
-                transition: all 0.3s ease;
-            }
+        {{-- Custom CSS --}}
+        <link rel="stylesheet" href="{{ asset('assets/css/home-user.css') }}">
 
-            .navbar-fixed.scrolled {
-                background-color: white;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            }
-
-            .nav-link {
-                transition: all 0.3s ease;
-                position: relative;
-                font-weight: 500;
-            }
-    
-            /* Mobile Menu */
-            .mobile-menu {
-                transform: translateY(-100%);
-                transition: all 0.3s ease;
-            }
-    
-            .mobile-menu.show {
-                transform: translateY(0);
-            }
-    
-            @media (min-width: 768px) {
-                .nav-link::after {
-                    content: '';
-                    position: absolute;
-                    bottom: -2px;
-                    left: 50%;
-                    width: 0;
-                    height: 2px;
-                    background-color: currentColor;
-                    transition: all 0.3s ease;
-                    transform: translateX(-50%);
-                }
-    
-                .nav-link:hover::after {
-                    width: 100%;
-                }
-    
-                .mobile-menu {
-                    transform: none;
-                }
-            }
-
-            /* Add to your existing styles section */
-            @media (max-width: 768px) {
-                body {
-                    padding-bottom: 4rem; /* Add padding to account for bottom navigation */
-                }
-                
-                /* Mobile menu transition */
-                #mobileMenuOverlay > div {
-                    transition: transform 0.3s ease-in-out;
-                }
-                
-                /* Active state for bottom nav items */
-                .bottom-nav-item.active {
-                    color: #2563eb; /* blue-600 */
-                }
-            }
-    
-            /* Custom Styles */
-            .hero-gradient {
-                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
-            }
-    
-            .package-card {
-                transition: all 0.3s ease;
-            }
-    
-            .package-card:hover {
-                transform: translateY(-5px);
-            }
-
-            /* Slider Styles */
-            .slider-container {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-            }
-
-            .slide {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                opacity: 0;
-                transition: opacity 1s ease-in-out;
-                background-size: cover;
-                background-position: center;
-            }
-
-            .slide.active {
-                opacity: 1;
-            }
-
-            /* Slider Navigation */
-            .slider-nav {
-                position: absolute;
-                bottom: 2rem;
-                left: 50%;
-                transform: translateX(-50%);
-                display: flex;
-                gap: 0.35rem; /* Mengurangi gap antar dot */
-                z-index: 20;
-            }
-
-            .slider-dot {
-                width: 0.5rem; /* Mengecilkan ukuran dot dari 0.75rem */
-                height: 0.5rem; /* Mengecilkan ukuran dot dari 0.75rem */
-                border-radius: 50%;
-                background-color: rgba(255, 255, 255, 0.3); /* Membuat inactive dot lebih transparan */
-                cursor: pointer;
-                transition: all 0.3s ease;
-                border: 1px solid rgba(255, 255, 255, 0.5); /* Menambahkan border tipis */
-            }
-
-            .slider-dot.active {
-                background-color: white;
-                transform: scale(1.1); /* Mengurangi scale effect dari 1.2 */
-                width: 1rem; /* Membuat dot aktif sedikit lebih panjang */
-                border-radius: 4px; /* Membuat dot aktif sedikit rounded rectangle */
-            }
-
-            /* Hover effect untuk dot */
-            .slider-dot:hover {
-                background-color: rgba(255, 255, 255, 0.8);
-            }
-
-            @keyframes scroll {
-                0% {
-                    transform: translateX(0);
-                }
-                100% {
-                    transform: translateX(calc(-200px * 6));
-                }
-            }
-
-            .animate-scroll {
-                animation: scroll 30s linear infinite;
-            }
-
-            /* Hover effect to pause animation */
-            .animate-scroll:hover {
-                animation-play-state: paused;
-            }
-
-            @keyframes testimonialScroll {
-                0% {
-                    transform: translateX(0);
-                }
-                100% {
-                    transform: translateX(calc(-300px * 3));
-                }
-            }
-
-            .testimonial-scroll {
-                animation: testimonialScroll 30s linear infinite;
-                display: flex;
-                gap: 2rem;
-                padding: 3rem 0;
-            }
-
-            .testimonial-scroll:hover {
-                animation-play-state: paused;
-            }
-
-            @media (min-width: 768px) {
-                @keyframes testimonialScroll {
-                    0% {
-                        transform: translateX(0);
-                    }
-                    100% {
-                        transform: translateX(calc(-400px * 3));
-                    }
-                }
-            }
-        </style>
     </head>
     <body class="bg-gray-50 text-gray-800">
         <x-navbar></x-navbar>
@@ -320,7 +128,7 @@
             <div class="container mx-auto px-4">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
                     <!-- Feature Card 1 -->
-                    <div class="text-center p-6 hover:transform hover:scale-105 transition-all">
+                    <div class="text-center p-6 hover:transform hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="50">
                         <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center 
                                   justify-center mx-auto mb-4">
                             <i class="fas fa-bolt text-2xl text-blue-600"></i>
@@ -330,7 +138,7 @@
                     </div>
 
                     <!-- Feature Card 2 -->
-                    <div class="text-center p-6 hover:transform hover:scale-105 transition-all">
+                    <div class="text-center p-6 hover:transform hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="50">
                         <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center 
                                   justify-center mx-auto mb-4">
                             <i class="fas fa-wifi text-2xl text-blue-600"></i>
@@ -340,7 +148,7 @@
                     </div>
 
                     <!-- Feature Card 3 -->
-                    <div class="text-center p-6 hover:transform hover:scale-105 transition-all">
+                    <div class="text-center p-6 hover:transform hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="50">
                         <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center 
                                   justify-center mx-auto mb-4">
                             <i class="fas fa-headset text-2xl text-blue-600"></i>
@@ -350,7 +158,7 @@
                     </div>
 
                     <!-- Feature Card 4 -->
-                    <div class="text-center p-6 hover:transform hover:scale-105 transition-all">
+                    <div class="text-center p-6 hover:transform hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="50">
                         <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center 
                                   justify-center mx-auto mb-4">
                             <i class="fas fa-shield-alt text-2xl text-blue-600"></i>
@@ -375,7 +183,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                     <!-- Basic Package -->
                     <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 package-card 
-                              transition-all">
+                              transition-all" data-aos="fade-up" data-aos-delay="75">
                         <div class="text-center mb-6">
                             <span class="text-blue-600 font-semibold">BASIC</span>
                             <h3 class="text-2xl md:text-3xl font-bold mt-2">Elite 20</h3>
@@ -412,7 +220,7 @@
 
                     <!-- Gold Package -->
                     <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 transform scale-105 
-                              border-2 border-blue-500 package-card transition-all relative">
+                              border-2 border-blue-500 package-card transition-all relative" data-aos="fade-up" data-aos-delay="75">
                         <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
                             <span class="bg-blue-600 text-white px-4 py-1 rounded-full text-sm">
                                 MOST POPULAR
@@ -455,7 +263,7 @@
 
                     <!-- Turbo Package -->
                     <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 package-card 
-                              transition-all">
+                              transition-all" data-aos="fade-up" data-aos-delay="75">
                         <div class="text-center mb-6">
                             <span class="text-blue-600 font-semibold">TURBO</span>
                             <h3 class="text-2xl md:text-3xl font-bold mt-2">Turbo 100</h3>
@@ -491,7 +299,7 @@
                     </div>
 
                     <!-- Premium Package -->
-                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 package-card transition-all">
+                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 package-card transition-all" data-aos="fade-up" data-aos-delay="75">
                         <div class="text-center mb-6">
                             <span class="text-blue-600 font-semibold">PREMIUM</span>
                             <h3 class="text-2xl md:text-3xl font-bold mt-2">Premium 200</h3>
@@ -541,7 +349,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- Internet Service Provider Card -->
-                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="75">
                         <div class="relative h-48">
                             <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2670&auto=format&fit=crop"
                                 alt="Internet Service Provider"
@@ -578,7 +386,7 @@
                     </div>
 
                     <!-- Software Development Card -->
-                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="75">
                         <div class="relative h-48">
                             <img src="https://images.unsplash.com/photo-1503252947848-7338d3f92f31?q=80&w=2670&auto=format&fit=crop"
                                 alt="Software Development"
@@ -615,7 +423,7 @@
                     </div>
 
                     <!-- IT Solution Card -->
-                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="75">
                         <div class="relative h-48">
                             <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2670&auto=format&fit=crop"
                                 alt="IT Solution"
@@ -762,7 +570,7 @@
                     <div class="flex testimonial-scroll">
                         <!-- Original Testimonials -->
                         <!-- Testimonial Card 1 -->
-                        <div class="min-w-[300px] md:min-w-[400px] px-6">
+                        <div class="min-w-[300px] md:min-w-[400px] px-6" data-aos="fade-left" data-aos-delay="100">
                             <div class="bg-white rounded-xl p-8 relative">
                                 <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
                                     <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&h=200&auto=format&fit=crop"
@@ -780,7 +588,7 @@
                         </div>
 
                         <!-- Testimonial Card 2 -->
-                        <div class="min-w-[300px] md:min-w-[400px] px-6">
+                        <div class="min-w-[300px] md:min-w-[400px] px-6" data-aos="fade-left" data-aos-delay="100">
                             <div class="bg-white rounded-xl p-8 relative">
                                 <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
                                     <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&h=200&auto=format&fit=crop"
@@ -798,7 +606,7 @@
                         </div>
 
                         <!-- Testimonial Card 3 -->
-                        <div class="min-w-[300px] md:min-w-[400px] px-6">
+                        <div class="min-w-[300px] md:min-w-[400px] px-6" data-aos="fade-left" data-aos-delay="100">
                             <div class="bg-white rounded-xl p-8 relative">
                                 <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
                                     <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&h=200&auto=format&fit=crop"
@@ -817,7 +625,7 @@
 
                         <!-- Duplicate cards for infinite scroll -->
                         <!-- Testimonial Card 1 (Duplicate) -->
-                        <div class="min-w-[300px] md:min-w-[400px] px-6">
+                        <div class="min-w-[300px] md:min-w-[400px] px-6" data-aos="fade-left" data-aos-delay="100">
                             <div class="bg-white rounded-xl p-8 relative">
                                 <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
                                     <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&h=200&auto=format&fit=crop"
@@ -835,7 +643,7 @@
                         </div>
 
                         <!-- Testimonial Card 2 (Duplicate) -->
-                        <div class="min-w-[300px] md:min-w-[400px] px-6">
+                        <div class="min-w-[300px] md:min-w-[400px] px-6" data-aos="fade-left" data-aos-delay="100">
                             <div class="bg-white rounded-xl p-8 relative">
                                 <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
                                     <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&h=200&auto=format&fit=crop"
@@ -853,7 +661,7 @@
                         </div>
 
                         <!-- Testimonial Card 3 (Duplicate) -->
-                        <div class="min-w-[300px] md:min-w-[400px] px-6">
+                        <div class="min-w-[300px] md:min-w-[400px] px-6" data-aos="fade-left" data-aos-delay="100">
                             <div class="bg-white rounded-xl p-8 relative">
                                 <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
                                     <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&h=200&auto=format&fit=crop"
@@ -887,7 +695,7 @@
                 <!-- FAQ Container -->
                 <div class="max-w-3xl mx-auto space-y-4">
                     <!-- FAQ Item 1 -->
-                    <div class="border border-gray-200 rounded-lg">
+                    <div class="border border-gray-200 rounded-lg" data-aos="fade-up" data-aos-delay="50">
                         <button class="w-full flex items-center justify-between p-4 md:p-5 hover:bg-gray-50 transition-all" 
                                 onclick="toggleFAQ(this)">
                             <span class="font-semibold text-left">Bagaimana cara berlangganan internet fiber?</span>
@@ -906,7 +714,7 @@
                     </div>
 
                     <!-- FAQ Item 2 -->
-                    <div class="border border-gray-200 rounded-lg">
+                    <div class="border border-gray-200 rounded-lg" data-aos="fade-up" data-aos-delay="50">
                         <button class="w-full flex items-center justify-between p-4 md:p-5 hover:bg-gray-50 transition-all"
                                 onclick="toggleFAQ(this)">
                             <span class="font-semibold text-left">Berapa lama proses instalasi internet?</span>
@@ -922,7 +730,7 @@
                     </div>
 
                     <!-- FAQ Item 3 -->
-                    <div class="border border-gray-200 rounded-lg">
+                    <div class="border border-gray-200 rounded-lg" data-aos="fade-up" data-aos-delay="50">
                         <button class="w-full flex items-center justify-between p-4 md:p-5 hover:bg-gray-50 transition-all"
                                 onclick="toggleFAQ(this)">
                             <span class="font-semibold text-left">Apakah ada biaya instalasi?</span>
@@ -938,7 +746,7 @@
                     </div>
 
                     <!-- FAQ Item 4 -->
-                    <div class="border border-gray-200 rounded-lg">
+                    <div class="border border-gray-200 rounded-lg" data-aos="fade-up" data-aos-delay="50">
                         <button class="w-full flex items-center justify-between p-4 md:p-5 hover:bg-gray-50 transition-all"
                                 onclick="toggleFAQ(this)">
                             <span class="font-semibold text-left">Bagaimana jika terjadi gangguan internet?</span>
@@ -957,7 +765,7 @@
                     </div>
 
                     <!-- FAQ Item 5 -->
-                    <div class="border border-gray-200 rounded-lg">
+                    <div class="border border-gray-200 rounded-lg" data-aos="fade-up" data-aos-delay="50">
                         <button class="w-full flex items-center justify-between p-4 md:p-5 hover:bg-gray-50 transition-all"
                                 onclick="toggleFAQ(this)">
                             <span class="font-semibold text-left">Apakah bisa upgrade/downgrade paket?</span>
@@ -990,7 +798,7 @@
                         
                         <div class="space-y-6">
                             <!-- Phone -->
-                            <div class="flex items-start">
+                            <div class="flex items-start" data-aos="fade-right" data-aos-delay="50">
                                 <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center 
                                         justify-center mr-5 flex-shrink-0">
                                     <i class="fas fa-phone text-blue-600 text-xl"></i>
@@ -1002,7 +810,7 @@
                             </div>
                             
                             <!-- Email -->
-                            <div class="flex items-start">
+                            <div class="flex items-start" data-aos="fade-right" data-aos-delay="50">
                                 <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center 
                                         justify-center mr-5 flex-shrink-0">
                                     <i class="fas fa-envelope text-blue-600 text-xl"></i>
@@ -1014,7 +822,7 @@
                             </div>
                             
                             <!-- Address -->
-                            <div class="flex items-start">
+                            <div class="flex items-start" data-aos="fade-right" data-aos-delay="50">
                                 <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center 
                                         justify-center mr-5 flex-shrink-0">
                                     <i class="fas fa-map-marker-alt text-blue-600 text-xl"></i>
@@ -1028,7 +836,7 @@
                     </div>
                     
                     <!-- Contact Form -->
-                    <div>
+                    <div data-aos="fade-up" data-aos-delay="50">
                         <form class="bg-gray-50 p-6 md:p-8 rounded-xl shadow-lg">
                             <div class="space-y-6">
                                 <!-- Name Field -->
@@ -1197,84 +1005,7 @@
             </div>
         </footer>
 
-        <script>
-            // Hero Slider
-            document.addEventListener('DOMContentLoaded', function() {
-                const slides = document.querySelectorAll('.slide');
-                const dots = document.querySelectorAll('.slider-dot');
-                let currentSlide = 0;
-                const slideInterval = 5000; // Change slide every 5 seconds
-                
-                function goToSlide(n) {
-                    // Remove active class from current slide and dot
-                    slides[currentSlide].classList.remove('active');
-                    dots[currentSlide].classList.remove('active');
-                    
-                    // Update current slide
-                    currentSlide = (n + slides.length) % slides.length;
-                    
-                    // Add active class to new slide and dot
-                    slides[currentSlide].classList.add('active');
-                    dots[currentSlide].classList.add('active');
-                }
-                
-                function nextSlide() {
-                    goToSlide(currentSlide + 1);
-                }
-                
-                // Auto advance slides
-                let slideTimer = setInterval(nextSlide, slideInterval);
-                
-                // Click handlers for dots
-                dots.forEach((dot, index) => {
-                    dot.addEventListener('click', () => {
-                        clearInterval(slideTimer);
-                        goToSlide(index);
-                        slideTimer = setInterval(nextSlide, slideInterval);
-                    });
-                });
-                
-                // Optional: Pause on hover
-                const sliderContainer = document.getElementById('heroSlider');
-                
-                sliderContainer.addEventListener('mouseenter', () => {
-                    clearInterval(slideTimer);
-                });
-                
-                sliderContainer.addEventListener('mouseleave', () => {
-                    slideTimer = setInterval(nextSlide, slideInterval);
-                });
-                
-                // Optional: Swipe support for mobile
-                let touchStartX = 0;
-                let touchEndX = 0;
-                
-                sliderContainer.addEventListener('touchstart', e => {
-                    touchStartX = e.changedTouches[0].screenX;
-                }, false);
-                
-                sliderContainer.addEventListener('touchend', e => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    handleSwipe();
-                }, false);
-                
-                function handleSwipe() {
-                    const swipeThreshold = 50;
-                    if (touchEndX < touchStartX - swipeThreshold) {
-                        // Swipe left
-                        clearInterval(slideTimer);
-                        nextSlide();
-                        slideTimer = setInterval(nextSlide, slideInterval);
-                    }
-                    if (touchEndX > touchStartX + swipeThreshold) {
-                        // Swipe right
-                        clearInterval(slideTimer);
-                        goToSlide(currentSlide - 1);
-                        slideTimer = setInterval(nextSlide, slideInterval);
-                    }
-                }
-            });
-        </script>
+        <script src="{{ asset('assets/js/slider.js') }}"></script>
         <script>
             function toggleFAQ(element) {
                 // Toggle active state
@@ -1304,6 +1035,16 @@
                     }
                 });
             }
+            </script>
+            <!-- Di bagian akhir body -->
+            <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+            <script>
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100,
+                easing: 'ease-in-out'
+            });
             </script>
     </body>
 </html>

@@ -1,0 +1,195 @@
+/* Typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+            
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Navbar Styles */
+.navbar-fixed {
+    transition: all 0.3s ease;
+}
+
+.navbar-fixed.scrolled {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-link {
+    transition: all 0.3s ease;
+    position: relative;
+    font-weight: 500;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    transform: translateY(-100%);
+    transition: all 0.3s ease;
+}
+
+.mobile-menu.show {
+    transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: currentColor;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+    .mobile-menu {
+        transform: none;
+    }
+}
+
+/* Add to your existing styles section */
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 4rem; /* Add padding to account for bottom navigation */
+    }
+    
+    /* Mobile menu transition */
+    #mobileMenuOverlay > div {
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    /* Active state for bottom nav items */
+    .bottom-nav-item.active {
+        color: #2563eb; /* blue-600 */
+    }
+}
+
+/* Custom Styles */
+.hero-gradient {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+}
+
+.package-card {
+    transition: all 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Slider Styles */
+.slider-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-size: cover;
+    background-position: center;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Slider Navigation */
+.slider-nav {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.35rem; /* Mengurangi gap antar dot */
+    z-index: 20;
+}
+
+.slider-dot {
+    width: 0.5rem; /* Mengecilkan ukuran dot dari 0.75rem */
+    height: 0.5rem; /* Mengecilkan ukuran dot dari 0.75rem */
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3); /* Membuat inactive dot lebih transparan */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Menambahkan border tipis */
+}
+
+.slider-dot.active {
+    background-color: white;
+    transform: scale(1.1); /* Mengurangi scale effect dari 1.2 */
+    width: 1rem; /* Membuat dot aktif sedikit lebih panjang */
+    border-radius: 4px; /* Membuat dot aktif sedikit rounded rectangle */
+}
+
+/* Hover effect untuk dot */
+.slider-dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-200px * 6));
+    }
+}
+
+.animate-scroll {
+    animation: scroll 30s linear infinite;
+}
+
+/* Hover effect to pause animation */
+.animate-scroll:hover {
+    animation-play-state: paused;
+}
+
+@keyframes testimonialScroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-300px * 3));
+    }
+}
+
+.testimonial-scroll {
+    animation: testimonialScroll 30s linear infinite;
+    display: flex;
+    gap: 2rem;
+    padding: 3rem 0;
+}
+
+.testimonial-scroll:hover {
+    animation-play-state: paused;
+}
+
+@media (min-width: 768px) {
+    @keyframes testimonialScroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-400px * 3));
+        }
+    }
+}
