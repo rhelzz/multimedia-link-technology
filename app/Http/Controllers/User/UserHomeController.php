@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\HeroSection;
 
 class UserHomeController extends Controller
 {
@@ -12,7 +13,13 @@ class UserHomeController extends Controller
      */
     public function index()
     {
-        return view('user.index');
+         // Ambil data hero section pertama atau yang terakhir dibuat
+         $heroSection = HeroSection::with(['sliders' => function($query) {
+            $query->where('is_active', true)
+                  ->orderBy('order');
+        }])->first();
+
+        return view('user.index', compact('heroSection'));
     }
 
     /**

@@ -23,50 +23,50 @@
 
         <!-- Hero Section -->
         <section class="min-h-screen pt-16 md:pt-24 pb-12 md:pb-20 bg-cover bg-center relative">
-            <!-- Slider Container (tetap sama) -->
+            <!-- Slider Container -->
             <div class="slider-container" id="heroSlider">
-                <div class="slide active" 
-                    style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop')">
-                </div>
-                <div class="slide" 
-                    style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1920&auto=format&fit=crop')">
-                </div>
-                <div class="slide" 
-                    style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1920&auto=format&fit=crop')">
-                </div>
+                @forelse($heroSection->sliders as $index => $slider)
+                    <div class="slide {{ $loop->first ? 'active' : '' }}" 
+                        style="background-image: url('{{ asset('storage/' . $slider->image) }}')">
+                    </div>
+                @empty
+                    <div class="slide active" 
+                        style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop')">
+                    </div>
+                @endforelse
             </div>
             
-            <!-- Slider Navigation (tetap sama) -->
+            <!-- Slider Navigation -->
             <div class="slider-nav">
-                <div class="slider-dot active" data-slide="0"></div>
-                <div class="slider-dot" data-slide="1"></div>
-                <div class="slider-dot" data-slide="2"></div>
+                @foreach($heroSection->sliders as $index => $slider)
+                    <div class="slider-dot {{ $loop->first ? 'active' : '' }}" data-slide="{{ $loop->index }}"></div>
+                @endforeach
             </div>
 
             <div class="hero-gradient absolute inset-0"></div>
             <div class="container mx-auto px-6 relative z-10 text-white">
                 <div class="min-h-[calc(100vh-200px)] flex items-center md:pl-10">
-                    <div class="max-w-3xl text-left space-y-5 md:space-y-6"> <!-- Mengurangi space-y -->
+                    <div class="max-w-3xl text-left space-y-5 md:space-y-6">
                         <!-- Hero Title -->
-                        <h1 class="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight"> <!-- Mengurangi ukuran font untuk desktop -->
-                            Internet Fiber Premium 
-                            <span class="block mt-1 md:mt-2">untuk Kebutuhan Digital Anda</span> <!-- Mengurangi margin top -->
+                        <h1 class="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight">
+                            {{ $heroSection->title }}
+                            <span class="block mt-1 md:mt-2">{{ $heroSection->subtitle }}</span>
                         </h1>
                         
                         <!-- Hero Description -->
-                        <div class="space-y-3"> <!-- Mengurangi space-y -->
-                            <p class="text-base sm:text-lg md:text-lg text-gray-100 leading-relaxed max-w-2xl"> <!-- Menambah max-width dan mengurangi ukuran font -->
-                                Nikmati kecepatan hingga 100 Mbps dengan stabilitas tinggi
+                        <div class="space-y-3">
+                            <p class="text-base sm:text-lg md:text-lg text-gray-100 leading-relaxed max-w-2xl">
+                                {{ $heroSection->description }}
                             </p>
                             <p class="inline-block px-4 py-2 bg-black/30 backdrop-blur-sm rounded-lg">
-                                <span class="text-yellow-400 font-semibold text-base sm:text-lg md:text-xl"> <!-- Mengurangi ukuran font -->
-                                    Mulai dari Rp199.000/bulan
+                                <span class="text-yellow-400 font-semibold text-base sm:text-lg md:text-xl">
+                                    {{ $heroSection->price_text }}
                                 </span>
                             </p>
                         </div>
                         
                         <!-- CTA Buttons -->
-                        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-3"> <!-- Mengurangi gap dan padding -->
+                        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-3">
                             <a href="#layanan" 
                             class="w-full sm:w-auto text-center bg-blue-600 hover:bg-blue-700 
                                     px-6 py-2.5 sm:py-3 rounded-xl text-base font-semibold 
@@ -85,37 +85,29 @@
                         </div>
                         
                         <!-- Feature Tags -->
-                        <div class="flex flex-wrap gap-3 pt-5 text-sm"> <!-- Mengurangi gap dan padding -->
-                            <span class="bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full 
-                                    border border-white/20 flex items-center gap-2">
-                                <i class="fas fa-check text-green-400"></i>
-                                Instalasi Cepat 24 Jam
-                            </span>
-                            <span class="bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full 
-                                    border border-white/20 flex items-center gap-2">
-                                <i class="fas fa-check text-green-400"></i>
-                                Gratis Biaya Admin
-                            </span>
-                            <span class="bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full 
-                                    border border-white/20 flex items-center gap-2">
-                                <i class="fas fa-check text-green-400"></i>
-                                Free Setup Modem WiFi
-                            </span>
+                        <div class="flex flex-wrap gap-3 pt-5 text-sm">
+                            @foreach($heroSection->feature_tags as $tag)
+                                <span class="bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full 
+                                        border border-white/20 flex items-center gap-2">
+                                    <i class="fas fa-check text-green-400"></i>
+                                    {{ $tag }}
+                                </span>
+                            @endforeach
                         </div>
 
                         <!-- Trust Indicators -->
-                        <div class="pt-6 flex flex-wrap gap-5 items-center text-sm"> <!-- Mengurangi padding dan ukuran font -->
+                        <div class="pt-6 flex flex-wrap gap-5 items-center text-sm">
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-star text-yellow-400"></i>
-                                <span>4.9/5 Rating Pelanggan</span>
+                                <span>{{ $heroSection->customer_rating }} Rating Pelanggan</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-users text-blue-400"></i>
-                                <span>10.000+ Pelanggan Aktif</span>
+                                <span>{{ $heroSection->active_customers }} Pelanggan Aktif</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-shield-alt text-green-400"></i>
-                                <span>Jaminan Uang Kembali</span>
+                                <span>{{ $heroSection->money_guarantee }}</span>
                             </div>
                         </div>
                     </div>
