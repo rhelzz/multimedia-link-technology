@@ -32,15 +32,15 @@
                                 hover:text-orange-500 transition-colors px-3 py-2">
                             <i class="fas fa-map-marker-alt mr-2"></i>Lokasi Area
                         </a>
-                        <a href="#dukungan" 
-                        class="nav-link relative text-gray-800 md:text-white 
-                                hover:text-orange-500 transition-colors px-3 py-2">
-                            <i class="fas fa-headset mr-2"></i>Bantuan & Dukungan
-                        </a>
                         <a href="#kontak" 
                         class="nav-link relative text-gray-800 md:text-white 
                                 hover:text-orange-500 transition-colors px-3 py-2">
                             <i class="fa-solid fa-address-book mr-2"></i>Kontak
+                        </a>
+                        <a href="#dukungan" 
+                        class="nav-link relative text-gray-800 md:text-white 
+                                hover:text-orange-500 transition-colors px-3 py-2">
+                            <i class="fas fa-headset mr-2"></i>Bantuan & Dukungan
                         </a>
                         <a href="#member" 
                         class="bg-orange-500 text-white px-6 py-2 rounded-full 
