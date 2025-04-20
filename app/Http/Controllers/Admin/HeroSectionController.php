@@ -17,7 +17,7 @@ class HeroSectionController extends Controller
 
     public function create()
     {
-        return view('admin.hero-section.form');
+        return view('admin.hero-section.create');
     }
 
     public function store(Request $request)
@@ -53,7 +53,7 @@ class HeroSectionController extends Controller
 
     public function edit(HeroSection $heroSection)
     {
-        return view('admin.hero-section.form', compact('heroSection'));
+        return view('admin.hero-section.edit', compact('heroSection'));
     }
 
     public function update(Request $request, HeroSection $heroSection)
