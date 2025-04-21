@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\User\UserHomeController;
+use App\Http\Controllers\Admin\FeaturesController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Admin\HeroSliderController;
 use App\Http\Controllers\Admin\HeroSectionController;
@@ -33,4 +34,9 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
         ->name('hero-section.sliders.toggle');
     Route::get('hero-section/{heroSection}/sliders', [HeroSliderController::class, 'index'])
         ->name('hero-section.sliders.index');
+});
+
+Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
+    // Routes for Features
+    Route::resource('features', FeaturesController::class);
 });
