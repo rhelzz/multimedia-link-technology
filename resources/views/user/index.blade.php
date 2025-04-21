@@ -122,41 +122,41 @@
                     <!-- Feature Card 1 -->
                     <div class="text-center p-6 hover:transform hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="50">
                         <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center 
-                                  justify-center mx-auto mb-4">
-                            <i class="fas fa-bolt text-2xl text-blue-600"></i>
+                                    justify-center mx-auto mb-4">
+                            <i class="fas fa-bolt text-2xl text-blue-600"></i> <!-- Ikon statis -->
                         </div>
-                        <h3 class="text-lg font-semibold mb-2">Ultra Fast</h3>
-                        <p class="text-gray-600">Kecepatan download hingga 100 Mbps</p>
+                        <h3 class="text-lg font-semibold mb-2">{{ $features[0]->title }}</h3>
+                        <p class="text-gray-600">{{ $features[0]->description }}</p>
                     </div>
-
+        
                     <!-- Feature Card 2 -->
                     <div class="text-center p-6 hover:transform hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="50">
                         <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center 
-                                  justify-center mx-auto mb-4">
-                            <i class="fas fa-wifi text-2xl text-blue-600"></i>
+                                    justify-center mx-auto mb-4">
+                            <i class="fas fa-wifi text-2xl text-blue-600"></i> <!-- Ikon statis -->
                         </div>
-                        <h3 class="text-lg font-semibold mb-2">Stable Connection</h3>
-                        <p class="text-gray-600">Koneksi stabil 24/7 dengan uptime 99.9%</p>
+                        <h3 class="text-lg font-semibold mb-2">{{ $features[1]->title }}</h3>
+                        <p class="text-gray-600">{{ $features[1]->description }}</p>
                     </div>
-
+        
                     <!-- Feature Card 3 -->
                     <div class="text-center p-6 hover:transform hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="50">
                         <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center 
-                                  justify-center mx-auto mb-4">
-                            <i class="fas fa-headset text-2xl text-blue-600"></i>
+                                    justify-center mx-auto mb-4">
+                            <i class="fas fa-headset text-2xl text-blue-600"></i> <!-- Ikon statis -->
                         </div>
-                        <h3 class="text-lg font-semibold mb-2">24/7 Support</h3>
-                        <p class="text-gray-600">Layanan pelanggan siap membantu</p>
+                        <h3 class="text-lg font-semibold mb-2">{{ $features[2]->title }}</h3>
+                        <p class="text-gray-600">{{ $features[2]->description }}</p>
                     </div>
-
+        
                     <!-- Feature Card 4 -->
                     <div class="text-center p-6 hover:transform hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="50">
                         <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center 
-                                  justify-center mx-auto mb-4">
-                            <i class="fas fa-shield-alt text-2xl text-blue-600"></i>
+                                    justify-center mx-auto mb-4">
+                            <i class="fas fa-shield-alt text-2xl text-blue-600"></i> <!-- Ikon statis -->
                         </div>
-                        <h3 class="text-lg font-semibold mb-2">Security First</h3>
-                        <p class="text-gray-600">Dilengkapi dengan keamanan premium</p>
+                        <h3 class="text-lg font-semibold mb-2">{{ $features[3]->title }}</h3>
+                        <p class="text-gray-600">{{ $features[3]->description }}</p>
                     </div>
                 </div>
             </div>

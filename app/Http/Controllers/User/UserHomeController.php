@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Features;
 use App\Models\HeroSection;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class UserHomeController extends Controller
 {
@@ -19,7 +21,9 @@ class UserHomeController extends Controller
                   ->orderBy('order');
         }])->first();
 
-        return view('user.index', compact('heroSection'));
+        $features = DB::table('features')->limit(4)->get(); // Ambil hanya 4 fitur
+
+        return view('user.index', compact('heroSection', 'features'));
     }
 
     /**
