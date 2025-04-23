@@ -221,124 +221,108 @@
         </section>
 
         <!-- Additional Services Section -->
-        <section class="py-16 md:py-20 bg-gray-50">
+        <section class="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-2xl md:text-3xl font-bold text-center mb-4">
-                    Layanan Lainnya
-                </h2>
-                <p class="text-center text-gray-600 mb-12">
-                    Solusi lengkap untuk kebutuhan teknologi dan digital Anda
-                </p>
+                <!-- Section Header with enhanced styling -->
+                <div class="max-w-3xl mx-auto text-center mb-16" data-aos="fade-up">
+                    <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-2 block">Our Services</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        Layanan Lainnya
+                    </h2>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Solusi lengkap untuk kebutuhan teknologi dan digital Anda dengan standar kualitas tertinggi
+                    </p>
+                </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Internet Service Provider Card -->
-                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="75">
-                        <div class="relative h-48">
-                            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2670&auto=format&fit=crop"
-                                alt="Internet Service Provider"
-                                class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        </div>
-                        <div class="p-6">
-                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                                <i class="fas fa-wifi text-2xl text-blue-600"></i>
+                <!-- Cards Container with improved layout -->
+                <div class="max-w-5xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                        <!-- Internet Service Provider Card -->
+                        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2" 
+                            data-aos="fade-right" 
+                            data-aos-delay="100">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2670&auto=format&fit=crop"
+                                    alt="Internet Service Provider"
+                                    class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                                <div class="absolute bottom-4 left-6 right-6">
+                                    <span class="px-4 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
+                                        Premium Service
+                                    </span>
+                                </div>
                             </div>
-                            <h3 class="text-xl font-bold mb-3">Internet Service Provider</h3>
-                            <p class="text-gray-600 mb-4">
-                                Layanan internet fiber premium dengan kecepatan tinggi dan stabilitas maksimal untuk rumah dan bisnis Anda.
-                            </p>
-                            <ul class="space-y-2 mb-6">
-                                <li class="flex items-center text-gray-600">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    Fiber Optic Technology
-                                </li>
-                                <li class="flex items-center text-gray-600">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    24/7 Technical Support
-                                </li>
-                                <li class="flex items-center text-gray-600">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    99.9% Uptime Guarantee
-                                </li>
-                            </ul>
-                            <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold">
-                                Pelajari Lebih Lanjut
-                                <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
+                            <div class="p-8">
+                                <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 transform -translate-y-1/2 shadow-lg">
+                                    <i class="fas fa-wifi text-2xl text-blue-600"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Internet Service Provider</h3>
+                                <p class="text-gray-600 mb-6 leading-relaxed">
+                                    Layanan internet fiber premium dengan kecepatan tinggi dan stabilitas maksimal untuk rumah dan bisnis Anda.
+                                </p>
+                                <ul class="space-y-3 mb-8">
+                                    <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
+                                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                        <span>Fiber Optic Technology</span>
+                                    </li>
+                                    <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
+                                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                        <span>24/7 Technical Support</span>
+                                    </li>
+                                    <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
+                                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                        <span>99.9% Uptime Guarantee</span>
+                                    </li>
+                                </ul>
+                                <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                                    Pelajari Lebih Lanjut
+                                    <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Software Development Card -->
-                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="75">
-                        <div class="relative h-48">
-                            <img src="https://images.unsplash.com/photo-1503252947848-7338d3f92f31?q=80&w=2670&auto=format&fit=crop"
-                                alt="Software Development"
-                                class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        </div>
-                        <div class="p-6">
-                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                                <i class="fas fa-code text-2xl text-blue-600"></i>
+                        <!-- Software Development Card -->
+                        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2" 
+                            data-aos="fade-left" 
+                            data-aos-delay="200">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1503252947848-7338d3f92f31?q=80&w=2670&auto=format&fit=crop"
+                                    alt="Software Development"
+                                    class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                                <div class="absolute bottom-4 left-6 right-6">
+                                    <span class="px-4 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
+                                        Custom Solutions
+                                    </span>
+                                </div>
                             </div>
-                            <h3 class="text-xl font-bold mb-3">Software Development</h3>
-                            <p class="text-gray-600 mb-4">
-                                Layanan pengembangan software kustom untuk memenuhi kebutuhan spesifik bisnis Anda dengan teknologi terkini.
-                            </p>
-                            <ul class="space-y-2 mb-6">
-                                <li class="flex items-center text-gray-600">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    Custom Application Development
-                                </li>
-                                <li class="flex items-center text-gray-600">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    Web & Mobile Solutions
-                                </li>
-                                <li class="flex items-center text-gray-600">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    API Integration
-                                </li>
-                            </ul>
-                            <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold">
-                                Pelajari Lebih Lanjut
-                                <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- IT Solution Card -->
-                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="75">
-                        <div class="relative h-48">
-                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2670&auto=format&fit=crop"
-                                alt="IT Solution"
-                                class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        </div>
-                        <div class="p-6">
-                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                                <i class="fas fa-laptop-code text-2xl text-blue-600"></i>
+                            <div class="p-8">
+                                <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 transform -translate-y-1/2 shadow-lg">
+                                    <i class="fas fa-code text-2xl text-blue-600"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Software Development</h3>
+                                <p class="text-gray-600 mb-6 leading-relaxed">
+                                    Layanan pengembangan software kustom untuk memenuhi kebutuhan spesifik bisnis Anda dengan teknologi terkini.
+                                </p>
+                                <ul class="space-y-3 mb-8">
+                                    <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
+                                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                        <span>Custom Application Development</span>
+                                    </li>
+                                    <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
+                                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                        <span>Web & Mobile Solutions</span>
+                                    </li>
+                                    <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
+                                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                        <span>API Integration</span>
+                                    </li>
+                                </ul>
+                                <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                                    Pelajari Lebih Lanjut
+                                    <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                                </a>
                             </div>
-                            <h3 class="text-xl font-bold mb-3">IT Solution</h3>
-                            <p class="text-gray-600 mb-4">
-                                Solusi IT komprehensif untuk mengoptimalkan dan mengamankan infrastruktur teknologi perusahaan Anda.
-                            </p>
-                            <ul class="space-y-2 mb-6">
-                                <li class="flex items-center text-gray-600">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    IT Infrastructure Setup
-                                </li>
-                                <li class="flex items-center text-gray-600">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    Cloud Solutions
-                                </li>
-                                <li class="flex items-center text-gray-600">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    Cybersecurity Services
-                                </li>
-                            </ul>
-                            <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold">
-                                Pelajari Lebih Lanjut
-                                <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
                         </div>
                     </div>
                 </div>
