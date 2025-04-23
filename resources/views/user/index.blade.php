@@ -173,158 +173,49 @@
                 </p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <!-- Basic Package -->
-                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 package-card 
-                              transition-all" data-aos="fade-up" data-aos-delay="75">
-                        <div class="text-center mb-6">
-                            <span class="text-blue-600 font-semibold">BASIC</span>
-                            <h3 class="text-2xl md:text-3xl font-bold mt-2">Elite 20</h3>
-                            <div class="mt-4">
-                                <span class="text-3xl md:text-4xl font-bold">Rp199.000</span>
-                                <span class="text-gray-500">/bulan</span>
+                    @forelse ($services as $service)
+                        <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 package-card transition-all 
+                            {{ $service->is_favorite ? 'transform scale-105 border-2 border-blue-500 relative' : '' }}"
+                            data-aos="fade-up" data-aos-delay="75">
+                            
+                            @if($service->is_favorite)
+                                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                                    <span class="bg-blue-600 text-white px-4 py-1 rounded-full text-sm">
+                                        MOST POPULAR
+                                    </span>
+                                </div>
+                            @endif
+        
+                            <div class="text-center mb-6">
+                                <span class="text-blue-600 font-semibold">{{ $service->label }}</span>
+                                <h3 class="text-2xl md:text-3xl font-bold mt-2">{{ $service->name }}</h3>
+                                <div class="mt-4">
+                                    <span class="text-3xl md:text-4xl font-bold" x-text="'Rp' + new Intl.NumberFormat('id-ID').format({{ $service->price }})">
+                                        Rp{{ number_format($service->price, 0, ',', '.') }}
+                                    </span>
+                                    <span class="text-gray-500">/bulan</span>
+                                </div>
                             </div>
+                            
+                            <ul class="space-y-4 mb-8">
+                                @foreach($service->features as $feature)
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>{{ $feature }}</span>
+                                    </li>
+                                @endforeach
+                            </ul>
+                            
+                            <button class="w-full bg-blue-600 text-white py-3 rounded-lg 
+                                        hover:bg-blue-700 transition-colors">
+                                Pilih Paket
+                            </button>
                         </div>
-                        
-                        <ul class="space-y-4 mb-8">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Kecepatan hingga 20 Mbps</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Unlimited Kuota</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Free Modem WiFi</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-circle-xmark text-red-500 mr-2"></i>
-                                <span>Prioritas Support</span>
-                            </li>
-                        </ul>
-                        
-                        <button class="w-full bg-blue-600 text-white py-3 rounded-lg 
-                                     hover:bg-blue-700 transition-colors">
-                            Pilih Paket
-                        </button>
-                    </div>
-
-                    <!-- Gold Package -->
-                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 transform scale-105 
-                              border-2 border-blue-500 package-card transition-all relative" data-aos="fade-up" data-aos-delay="75">
-                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                            <span class="bg-blue-600 text-white px-4 py-1 rounded-full text-sm">
-                                MOST POPULAR
-                            </span>
+                    @empty
+                        <div class="col-span-4 text-center py-8">
+                            <p class="text-gray-500">Tidak ada paket tersedia saat ini.</p>
                         </div>
-                        
-                        <div class="text-center mb-6">
-                            <span class="text-blue-600 font-semibold">GOLD</span>
-                            <h3 class="text-2xl md:text-3xl font-bold mt-2">Gold 50</h3>
-                            <div class="mt-4">
-                                <span class="text-3xl md:text-4xl font-bold">Rp299.000</span>
-                                <span class="text-gray-500">/bulan</span>
-                            </div>
-                        </div>
-                        
-                        <ul class="space-y-4 mb-8">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Kecepatan hingga 50 Mbps</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Unlimited Kuota</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Free Premium Modem</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Prioritas Support</span>
-                            </li>
-                        </ul>
-                        
-                        <button class="w-full bg-blue-600 text-white py-3 rounded-lg 
-                                     hover:bg-blue-700 transition-colors">
-                            Pilih Paket
-                        </button>
-                    </div>
-
-                    <!-- Turbo Package -->
-                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 package-card 
-                              transition-all" data-aos="fade-up" data-aos-delay="75">
-                        <div class="text-center mb-6">
-                            <span class="text-blue-600 font-semibold">TURBO</span>
-                            <h3 class="text-2xl md:text-3xl font-bold mt-2">Turbo 100</h3>
-                            <div class="mt-4">
-                                <span class="text-3xl md:text-4xl font-bold">Rp399.000</span>
-                                <span class="text-gray-500">/bulan</span>
-                            </div>
-                        </div>
-                        
-                        <ul class="space-y-4 mb-8">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Kecepatan hingga 100 Mbps</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Unlimited Kuota</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Gaming Router</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>24/7 Premium Support</span>
-                            </li>
-                        </ul>
-                        
-                        <button class="w-full bg-blue-600 text-white py-3 rounded-lg 
-                                     hover:bg-blue-700 transition-colors">
-                            Pilih Paket
-                        </button>
-                    </div>
-
-                    <!-- Premium Package -->
-                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 package-card transition-all" data-aos="fade-up" data-aos-delay="75">
-                        <div class="text-center mb-6">
-                            <span class="text-blue-600 font-semibold">PREMIUM</span>
-                            <h3 class="text-2xl md:text-3xl font-bold mt-2">Premium 200</h3>
-                            <div class="mt-4">
-                                <span class="text-3xl md:text-4xl font-bold">Rp599.000</span>
-                                <span class="text-gray-500">/bulan</span>
-                            </div>
-                        </div>
-                        
-                        <ul class="space-y-4 mb-8">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Kecepatan hingga 200 Mbps</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Unlimited Kuota</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Enterprise Router</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <span>Dedicated Premium Support</span>
-                            </li>
-                        </ul>
-                        
-                        <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">
-                            Pilih Paket
-                        </button>
-                    </div>
-
+                    @endforelse
                 </div>
             </div>
         </section>
