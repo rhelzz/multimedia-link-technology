@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Service;
 use App\Models\Features;
 use App\Models\HeroSection;
 use Illuminate\Http\Request;
@@ -23,7 +24,9 @@ class UserHomeController extends Controller
 
         $features = DB::table('features')->limit(4)->get(); // Ambil hanya 4 fitur
 
-        return view('user.index', compact('heroSection', 'features'));
+        $services = Service::all();
+
+        return view('user.index', compact('heroSection', 'features', 'services'));
     }
 
     /**

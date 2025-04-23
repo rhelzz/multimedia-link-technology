@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\FeaturesController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Admin\HeroSliderController;
 use App\Http\Controllers\Admin\HeroSectionController;
+use App\Http\Controllers\Admin\ServicesAdminController;
 
 Route::resource('/', UserHomeController::class);
 
@@ -39,4 +40,8 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
 Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     // Routes for Features
     Route::resource('features', FeaturesController::class);
+});
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('services', ServicesAdminController::class);
 });
