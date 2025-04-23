@@ -9,7 +9,6 @@ class Service extends Model
 {
     use HasFactory;
 
-    // Daftar atribut yang dapat diisi secara massal
     protected $fillable = [
         'name',
         'label',
@@ -18,7 +17,6 @@ class Service extends Model
         'is_favorite',
     ];
 
-    // Cast fitur ke array secara otomatis
     protected $casts = [
         'features' => 'array',
         'is_favorite' => 'boolean',
