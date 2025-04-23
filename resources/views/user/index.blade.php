@@ -253,9 +253,6 @@
                                 </div>
                             </div>
                             <div class="p-8">
-                                <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 transform -translate-y-1/2 shadow-lg">
-                                    <i class="fas fa-wifi text-2xl text-blue-600"></i>
-                                </div>
                                 <h3 class="text-2xl font-bold text-gray-900 mb-4">Internet Service Provider</h3>
                                 <p class="text-gray-600 mb-6 leading-relaxed">
                                     Layanan internet fiber premium dengan kecepatan tinggi dan stabilitas maksimal untuk rumah dan bisnis Anda.
@@ -297,9 +294,6 @@
                                 </div>
                             </div>
                             <div class="p-8">
-                                <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 transform -translate-y-1/2 shadow-lg">
-                                    <i class="fas fa-code text-2xl text-blue-600"></i>
-                                </div>
                                 <h3 class="text-2xl font-bold text-gray-900 mb-4">Software Development</h3>
                                 <p class="text-gray-600 mb-6 leading-relaxed">
                                     Layanan pengembangan software kustom untuk memenuhi kebutuhan spesifik bisnis Anda dengan teknologi terkini.
