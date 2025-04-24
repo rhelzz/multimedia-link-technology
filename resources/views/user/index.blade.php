@@ -233,91 +233,129 @@
                         Solusi lengkap untuk kebutuhan teknologi dan digital Anda dengan standar kualitas tertinggi
                     </p>
                 </div>
-
+        
                 <!-- Cards Container with improved layout -->
                 <div class="max-w-5xl mx-auto">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                        <!-- Internet Service Provider Card -->
-                        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2" 
-                            data-aos="fade-right" 
-                            data-aos-delay="100">
-                            <div class="relative h-64 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2670&auto=format&fit=crop"
-                                    alt="Internet Service Provider"
-                                    class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                                <div class="absolute bottom-4 left-6 right-6">
-                                    <span class="px-4 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
-                                        Premium Service
-                                    </span>
+                        @forelse($additionalServices as $service)
+                            <!-- Dynamic Service Card -->
+                            <div class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2" 
+                                data-aos="{{ $service->order % 2 == 0 ? 'fade-right' : 'fade-left' }}" 
+                                data-aos-delay="{{ ($service->order + 1) * 100 }}">
+                                <div class="relative h-64 overflow-hidden">
+                                    <img src="{{ asset('storage/' . $service->image) }}"
+                                        alt="{{ $service->title }}"
+                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                                    <div class="absolute bottom-4 left-6 right-6">
+                                        <span class="px-4 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
+                                            {{ $service->badge }}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="p-8">
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ $service->title }}</h3>
+                                    <p class="text-gray-600 mb-6 leading-relaxed">
+                                        {{ $service->description }}
+                                    </p>
+                                    <ul class="space-y-3 mb-8">
+                                        @foreach(explode(',', $service->features) as $feature)
+                                            <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
+                                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                                <span>{{ trim($feature) }}</span>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                    <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                                        Pelajari Lebih Lanjut
+                                        <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="p-8">
-                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Internet Service Provider</h3>
-                                <p class="text-gray-600 mb-6 leading-relaxed">
-                                    Layanan internet fiber premium dengan kecepatan tinggi dan stabilitas maksimal untuk rumah dan bisnis Anda.
-                                </p>
-                                <ul class="space-y-3 mb-8">
-                                    <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
-                                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                        <span>Fiber Optic Technology</span>
-                                    </li>
-                                    <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
-                                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                        <span>24/7 Technical Support</span>
-                                    </li>
-                                    <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
-                                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                        <span>99.9% Uptime Guarantee</span>
-                                    </li>
-                                </ul>
-                                <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
-                                    Pelajari Lebih Lanjut
-                                    <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Software Development Card -->
-                        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2" 
-                            data-aos="fade-left" 
-                            data-aos-delay="200">
-                            <div class="relative h-64 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1503252947848-7338d3f92f31?q=80&w=2670&auto=format&fit=crop"
-                                    alt="Software Development"
-                                    class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                                <div class="absolute bottom-4 left-6 right-6">
-                                    <span class="px-4 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
-                                        Custom Solutions
-                                    </span>
+                        @empty
+                            <!-- Show default content when no services are found -->
+                            <!-- Internet Service Provider Card -->
+                            <div class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2" 
+                                data-aos="fade-right" 
+                                data-aos-delay="100">
+                                <div class="relative h-64 overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2670&auto=format&fit=crop"
+                                        alt="Internet Service Provider"
+                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                                    <div class="absolute bottom-4 left-6 right-6">
+                                        <span class="px-4 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
+                                            Premium Service
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="p-8">
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Internet Service Provider</h3>
+                                    <p class="text-gray-600 mb-6 leading-relaxed">
+                                        Layanan internet fiber premium dengan kecepatan tinggi dan stabilitas maksimal untuk rumah dan bisnis Anda.
+                                    </p>
+                                    <ul class="space-y-3 mb-8">
+                                        <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
+                                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                            <span>Fiber Optic Technology</span>
+                                        </li>
+                                        <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
+                                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                            <span>24/7 Technical Support</span>
+                                        </li>
+                                        <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
+                                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                            <span>99.9% Uptime Guarantee</span>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                                        Pelajari Lebih Lanjut
+                                        <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="p-8">
-                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Software Development</h3>
-                                <p class="text-gray-600 mb-6 leading-relaxed">
-                                    Layanan pengembangan software kustom untuk memenuhi kebutuhan spesifik bisnis Anda dengan teknologi terkini.
-                                </p>
-                                <ul class="space-y-3 mb-8">
-                                    <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
-                                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                        <span>Custom Application Development</span>
-                                    </li>
-                                    <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
-                                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                        <span>Web & Mobile Solutions</span>
-                                    </li>
-                                    <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
-                                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                        <span>API Integration</span>
-                                    </li>
-                                </ul>
-                                <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
-                                    Pelajari Lebih Lanjut
-                                    <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
-                                </a>
+        
+                            <!-- Software Development Card -->
+                            <div class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2" 
+                                data-aos="fade-left" 
+                                data-aos-delay="200">
+                                <div class="relative h-64 overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1503252947848-7338d3f92f31?q=80&w=2670&auto=format&fit=crop"
+                                        alt="Software Development"
+                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                                    <div class="absolute bottom-4 left-6 right-6">
+                                        <span class="px-4 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
+                                            Custom Solutions
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="p-8">
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Software Development</h3>
+                                    <p class="text-gray-600 mb-6 leading-relaxed">
+                                        Layanan pengembangan software kustom untuk memenuhi kebutuhan spesifik bisnis Anda dengan teknologi terkini.
+                                    </p>
+                                    <ul class="space-y-3 mb-8">
+                                        <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
+                                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                            <span>Custom Application Development</span>
+                                        </li>
+                                        <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
+                                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                            <span>Web & Mobile Solutions</span>
+                                        </li>
+                                        <li class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
+                                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                            <span>API Integration</span>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                                        Pelajari Lebih Lanjut
+                                        <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        @endforelse
                     </div>
                 </div>
             </div>

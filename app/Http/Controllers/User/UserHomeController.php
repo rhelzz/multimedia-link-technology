@@ -6,6 +6,7 @@ use App\Models\Service;
 use App\Models\Features;
 use App\Models\HeroSection;
 use Illuminate\Http\Request;
+use App\Models\AdditionalService;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -26,7 +27,9 @@ class UserHomeController extends Controller
 
         $services = Service::all();
 
-        return view('user.index', compact('heroSection', 'features', 'services'));
+        $additionalServices = AdditionalService::where('is_active', true)->orderBy('order')->get();
+
+        return view('user.index', compact('heroSection', 'features', 'services', 'additionalServices'));
     }
 
     /**
