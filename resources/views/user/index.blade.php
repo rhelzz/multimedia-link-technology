@@ -370,87 +370,36 @@
                 <p class="text-center text-gray-600 mb-12">
                     Berkolaborasi dengan perusahaan teknologi terkemuka untuk memberikan layanan terbaik
                 </p>
-
-                <!-- Slider Container -->
-                <div class="relative">
-                    <!-- First Slider (Original) -->
-                    <div class="flex animate-scroll">
-                        <!-- Google -->
-                        <div class="flex items-center justify-center min-w-[200px] px-8">
-                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" 
-                                alt="Google" 
-                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
-                        </div>
-                        <!-- Microsoft -->
-                        <div class="flex items-center justify-center min-w-[200px] px-8">
-                            <img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" 
-                                alt="Microsoft" 
-                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
-                        </div>
-                        <!-- Amazon -->
-                        <div class="flex items-center justify-center min-w-[200px] px-8">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" 
-                                alt="Amazon" 
-                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
-                        </div>
-                        <!-- IBM -->
-                        <div class="flex items-center justify-center min-w-[200px] px-8">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png" 
-                                alt="IBM" 
-                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
-                        </div>
-                        <!-- Intel -->
-                        <div class="flex items-center justify-center min-w-[200px] px-8">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Intel_logo_%282006-2020%29.svg/2560px-Intel_logo_%282006-2020%29.svg.png" 
-                                alt="Intel" 
-                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
-                        </div>
-                        <!-- Cisco -->
-                        <div class="flex items-center justify-center min-w-[200px] px-8">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Cisco_logo_blue_2016.svg/2560px-Cisco_logo_blue_2016.svg.png" 
-                                alt="Cisco" 
-                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
-                        </div>
-
-                        <!-- Duplicate for seamless loop -->
-                        <!-- Google -->
-                        <div class="flex items-center justify-center min-w-[200px] px-8">
-                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" 
-                                alt="Google" 
-                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
-                        </div>
-                        <!-- Microsoft -->
-                        <div class="flex items-center justify-center min-w-[200px] px-8">
-                            <img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" 
-                                alt="Microsoft" 
-                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
-                        </div>
-                        <!-- Amazon -->
-                        <div class="flex items-center justify-center min-w-[200px] px-8">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" 
-                                alt="Amazon" 
-                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
-                        </div>
-                        <!-- IBM -->
-                        <div class="flex items-center justify-center min-w-[200px] px-8">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png" 
-                                alt="IBM" 
-                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
-                        </div>
-                        <!-- Intel -->
-                        <div class="flex items-center justify-center min-w-[200px] px-8">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Intel_logo_%282006-2020%29.svg/2560px-Intel_logo_%282006-2020%29.svg.png" 
-                                alt="Intel" 
-                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
-                        </div>
-                        <!-- Cisco -->
-                        <div class="flex items-center justify-center min-w-[200px] px-8">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Cisco_logo_blue_2016.svg/2560px-Cisco_logo_blue_2016.svg.png" 
-                                alt="Cisco" 
-                                class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
+        
+                @if(count($partners) > 0)
+                    <!-- Slider Container -->
+                    <div class="relative">
+                        <!-- Dynamic Partner Slider -->
+                        <div class="flex animate-scroll">
+                            @foreach($partners as $partner)
+                                <div class="flex items-center justify-center min-w-[200px] px-8">
+                                    <img src="{{ asset('storage/' . $partner->image) }}" 
+                                        alt="{{ $partner->name }}" 
+                                        class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                                </div>
+                            @endforeach
+                            
+                            <!-- Duplicate for seamless loop -->
+                            @foreach($partners as $partner)
+                                <div class="flex items-center justify-center min-w-[200px] px-8">
+                                    <img src="{{ asset('storage/' . $partner->image) }}" 
+                                        alt="{{ $partner->name }}" 
+                                        class="max-h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                                </div>
+                            @endforeach
                         </div>
                     </div>
-                </div>
+                @else
+                    <!-- Fallback if no partners are found -->
+                    <div class="text-center text-gray-500 py-8">
+                        <p>Partner akan segera hadir.</p>
+                    </div>
+                @endif
             </div>
         </section>
 

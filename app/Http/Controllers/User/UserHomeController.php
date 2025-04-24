@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Partner;
 use App\Models\Service;
 use App\Models\Features;
 use App\Models\HeroSection;
@@ -29,7 +30,9 @@ class UserHomeController extends Controller
 
         $additionalServices = AdditionalService::where('is_active', true)->orderBy('order')->get();
 
-        return view('user.index', compact('heroSection', 'features', 'services', 'additionalServices'));
+        $partners = Partner::where('is_active', true)->orderBy('order')->get();
+
+        return view('user.index', compact('heroSection', 'features', 'services', 'additionalServices', 'partners'));
     }
 
     /**
