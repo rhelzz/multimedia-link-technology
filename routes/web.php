@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\HeroSliderController;
 use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\ServicesAdminController;
 use App\Http\Controllers\Admin\AdditionalServiceController;
+use App\Http\Controllers\Admin\PartnerController;
 
 Route::resource('/', UserHomeController::class);
 
@@ -49,4 +50,8 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('additional-services', AdditionalServiceController::class);
+});
+
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('partners', PartnerController::class);
 });
