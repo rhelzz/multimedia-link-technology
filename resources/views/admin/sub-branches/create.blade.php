@@ -69,13 +69,14 @@
                         @enderror
                     </div>
 
-                    <!-- Alamat Lengkap -->
+                    <!-- Embed Location Code -->
                     <div class="mb-6">
-                        <label for="address" class="block text-sm font-medium text-gray-700 mb-2">Alamat Lengkap</label>
-                        <textarea id="address" name="address" rows="3"
+                        <label for="embed_location_code" class="block text-sm font-medium text-gray-700 mb-2">Embed Code Google Maps</label>
+                        <textarea id="embed_location_code" name="embed_location_code" rows="3"
                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
-                                  placeholder="Masukkan alamat lengkap" required>{{ old('address') }}</textarea>
-                        @error('address')
+                                  placeholder="<iframe src='https://maps.google.com/...'></iframe>">{{ old('embed_location_code') }}</textarea>
+                        <p class="text-xs text-gray-500 mt-1">Masukkan kode embed dari Google Maps untuk menampilkan lokasi</p>
+                        @error('embed_location_code')
                             <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
                         @enderror
                     </div>
@@ -87,17 +88,6 @@
                                class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
                                placeholder="Contoh: 628123456789" required>
                         @error('whatsapp_number')
-                            <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <!-- Google Maps Link -->
-                    <div class="mb-6">
-                        <label for="google_maps_link" class="block text-sm font-medium text-gray-700 mb-2">Link Google Maps</label>
-                        <input type="url" id="google_maps_link" name="google_maps_link" value="{{ old('google_maps_link') }}"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
-                               placeholder="https://maps.google.com/...">
-                        @error('google_maps_link')
                             <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
                         @enderror
                     </div>
