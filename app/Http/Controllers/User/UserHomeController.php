@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Faq;
 use App\Models\Partner;
 use App\Models\Service;
 use App\Models\Features;
@@ -35,7 +36,9 @@ class UserHomeController extends Controller
 
         $testimonials = Testimonial::where('is_active', 1)->orderBy('order', 'asc')->get();
 
-        return view('user.index', compact('heroSection', 'features', 'services', 'additionalServices', 'partners', 'testimonials'));
+        $faqs = Faq::where('is_active', true)->orderBy('order')->get();
+
+        return view('user.index', compact('heroSection', 'features', 'services', 'additionalServices', 'partners', 'testimonials', 'faqs'));
     }
 
     /**
