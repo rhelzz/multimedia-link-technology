@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\Faq;
+use App\Models\Contact;
 use App\Models\Partner;
 use App\Models\Service;
 use App\Models\Features;
@@ -38,7 +39,9 @@ class UserHomeController extends Controller
 
         $faqs = Faq::where('is_active', true)->orderBy('order')->get();
 
-        return view('user.index', compact('heroSection', 'features', 'services', 'additionalServices', 'partners', 'testimonials', 'faqs'));
+        $contact = Contact::where('is_active', true)->first();
+
+        return view('user.index', compact('heroSection', 'features', 'services', 'additionalServices', 'partners', 'testimonials', 'faqs', 'contact'));
     }
 
     /**

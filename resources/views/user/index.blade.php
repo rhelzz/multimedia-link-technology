@@ -513,6 +513,7 @@
                             bawah ini.
                         </p>
                         
+                        @if(isset($contact))
                         <div class="space-y-6">
                             <!-- Phone -->
                             <div class="flex items-start" data-aos="fade-right" data-aos-delay="50">
@@ -522,7 +523,7 @@
                                 </div>
                                 <div class="pt-1">
                                     <h3 class="font-semibold text-lg mb-1">Telepon</h3>
-                                    <p class="text-gray-600">0800-1234-5678</p>
+                                    <p class="text-gray-600">{{ $contact->phone }}</p>
                                 </div>
                             </div>
                             
@@ -534,7 +535,7 @@
                                 </div>
                                 <div class="pt-1">
                                     <h3 class="font-semibold text-lg mb-1">Email</h3>
-                                    <p class="text-gray-600">support@multimedialinktechnology.id</p>
+                                    <p class="text-gray-600">{{ $contact->email }}</p>
                                 </div>
                             </div>
                             
@@ -546,10 +547,15 @@
                                 </div>
                                 <div class="pt-1">
                                     <h3 class="font-semibold text-lg mb-1">Alamat</h3>
-                                    <p class="text-gray-600">Jl. Internet Cepat No. 88, Jakarta</p>
+                                    <p class="text-gray-600">{{ $contact->address }}</p>
                                 </div>
                             </div>
                         </div>
+                        @else
+                        <div class="text-gray-600">
+                            Contact information not available.
+                        </div>
+                        @endif
                     </div>
                     
                     <!-- Contact Form -->
