@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BranchController;
 use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\SubBranchController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\PartnerController;
@@ -69,4 +71,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('contacts', ContactController::class);
+});
+
+Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
+    Route::resource('branches', BranchController::class);
+    
+    // Rute nested untuk sub cabang
+    Route::resource('branches.sub-branches', SubBranchController::class)->parameters([
+        'sub-branches' => 'subBranch'
+    ]);
 });
