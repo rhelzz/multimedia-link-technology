@@ -416,115 +416,53 @@
                 <!-- Testimonial Slider Container -->
                 <div class="relative">
                     <div class="flex testimonial-scroll">
-                        <!-- Original Testimonials -->
-                        <!-- Testimonial Card 1 -->
-                        <div class="min-w-[300px] md:min-w-[400px] px-6" data-aos="fade-left" data-aos-delay="100">
-                            <div class="bg-white rounded-xl p-8 relative">
-                                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
-                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&h=200&auto=format&fit=crop"
-                                        alt="Client 1"
-                                        class="w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover">
+                        @if($testimonials->count() > 0)
+                            <!-- Original Testimonials -->
+                            @foreach($testimonials->where('is_active', 1) as $testimonial)
+                                <!-- Testimonial Card -->
+                                <div class="min-w-[300px] md:min-w-[400px] px-6" data-aos="fade-left" data-aos-delay="100">
+                                    <div class="bg-white rounded-xl p-8 relative">
+                                        <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                                            <img src="{{ asset('storage/'.$testimonial->image) }}"
+                                                alt="{{ $testimonial->client_name }}"
+                                                class="w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover">
+                                        </div>
+                                        <div class="text-center pt-12">
+                                            <p class="text-gray-600 italic mb-4">
+                                                "{{ $testimonial->quote }}"
+                                            </p>
+                                            <h4 class="font-semibold text-lg">{{ $testimonial->client_name }}</h4>
+                                            <p class="text-sm text-gray-500">{{ $testimonial->position }}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="text-center pt-12">
-                                    <p class="text-gray-600 italic mb-4">
-                                        "Kecepatan internet yang luar biasa stabil dan customer service yang sangat responsif. Sangat membantu untuk kebutuhan bisnis saya."
-                                    </p>
-                                    <h4 class="font-semibold text-lg">John Doe</h4>
-                                    <p class="text-sm text-gray-500">CEO, Tech Startup</p>
-                                </div>
-                            </div>
-                        </div>
+                            @endforeach
 
-                        <!-- Testimonial Card 2 -->
-                        <div class="min-w-[300px] md:min-w-[400px] px-6" data-aos="fade-left" data-aos-delay="100">
-                            <div class="bg-white rounded-xl p-8 relative">
-                                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
-                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&h=200&auto=format&fit=crop"
-                                        alt="Client 2"
-                                        class="w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover">
+                            <!-- Duplicate cards for infinite scroll -->
+                            @foreach($testimonials->where('is_active', 1) as $testimonial)
+                                <!-- Testimonial Card (Duplicate) -->
+                                <div class="min-w-[300px] md:min-w-[400px] px-6" data-aos="fade-left" data-aos-delay="100">
+                                    <div class="bg-white rounded-xl p-8 relative">
+                                        <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                                            <img src="{{ asset('storage/'.$testimonial->image) }}"
+                                                alt="{{ $testimonial->client_name }}"
+                                                class="w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover">
+                                        </div>
+                                        <div class="text-center pt-12">
+                                            <p class="text-gray-600 italic mb-4">
+                                                "{{ $testimonial->quote }}"
+                                            </p>
+                                            <h4 class="font-semibold text-lg">{{ $testimonial->client_name }}</h4>
+                                            <p class="text-sm text-gray-500">{{ $testimonial->position }}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="text-center pt-12">
-                                    <p class="text-gray-600 italic mb-4">
-                                        "Proses instalasi cepat dan teknisi sangat profesional. Koneksi stabil membantu saya bekerja dari rumah dengan lancar."
-                                    </p>
-                                    <h4 class="font-semibold text-lg">Sarah Johnson</h4>
-                                    <p class="text-sm text-gray-500">Digital Marketing Manager</p>
-                                </div>
+                            @endforeach
+                        @else
+                            <div class="w-full text-center py-8">
+                                <p class="text-gray-500">Belum ada testimonial untuk ditampilkan</p>
                             </div>
-                        </div>
-
-                        <!-- Testimonial Card 3 -->
-                        <div class="min-w-[300px] md:min-w-[400px] px-6" data-aos="fade-left" data-aos-delay="100">
-                            <div class="bg-white rounded-xl p-8 relative">
-                                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
-                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&h=200&auto=format&fit=crop"
-                                        alt="Client 3"
-                                        class="w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover">
-                                </div>
-                                <div class="text-center pt-12">
-                                    <p class="text-gray-600 italic mb-4">
-                                        "Layanan pelanggan 24/7 yang sangat membantu. Setiap kendala selalu diselesaikan dengan cepat dan profesional."
-                                    </p>
-                                    <h4 class="font-semibold text-lg">Michael Chen</h4>
-                                    <p class="text-sm text-gray-500">Game Developer</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Duplicate cards for infinite scroll -->
-                        <!-- Testimonial Card 1 (Duplicate) -->
-                        <div class="min-w-[300px] md:min-w-[400px] px-6" data-aos="fade-left" data-aos-delay="100">
-                            <div class="bg-white rounded-xl p-8 relative">
-                                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
-                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&h=200&auto=format&fit=crop"
-                                        alt="Client 1"
-                                        class="w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover">
-                                </div>
-                                <div class="text-center pt-12">
-                                    <p class="text-gray-600 italic mb-4">
-                                        "Kecepatan internet yang luar biasa stabil dan customer service yang sangat responsif. Sangat membantu untuk kebutuhan bisnis saya."
-                                    </p>
-                                    <h4 class="font-semibold text-lg">John Doe</h4>
-                                    <p class="text-sm text-gray-500">CEO, Tech Startup</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Testimonial Card 2 (Duplicate) -->
-                        <div class="min-w-[300px] md:min-w-[400px] px-6" data-aos="fade-left" data-aos-delay="100">
-                            <div class="bg-white rounded-xl p-8 relative">
-                                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
-                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&h=200&auto=format&fit=crop"
-                                        alt="Client 2"
-                                        class="w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover">
-                                </div>
-                                <div class="text-center pt-12">
-                                    <p class="text-gray-600 italic mb-4">
-                                        "Proses instalasi cepat dan teknisi sangat profesional. Koneksi stabil membantu saya bekerja dari rumah dengan lancar."
-                                    </p>
-                                    <h4 class="font-semibold text-lg">Sarah Johnson</h4>
-                                    <p class="text-sm text-gray-500">Digital Marketing Manager</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Testimonial Card 3 (Duplicate) -->
-                        <div class="min-w-[300px] md:min-w-[400px] px-6" data-aos="fade-left" data-aos-delay="100">
-                            <div class="bg-white rounded-xl p-8 relative">
-                                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
-                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&h=200&auto=format&fit=crop"
-                                        alt="Client 3"
-                                        class="w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover">
-                                </div>
-                                <div class="text-center pt-12">
-                                    <p class="text-gray-600 italic mb-4">
-                                        "Layanan pelanggan 24/7 yang sangat membantu. Setiap kendala selalu diselesaikan dengan cepat dan profesional."
-                                    </p>
-                                    <h4 class="font-semibold text-lg">Michael Chen</h4>
-                                    <p class="text-sm text-gray-500">Game Developer</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

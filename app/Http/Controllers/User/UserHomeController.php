@@ -6,6 +6,7 @@ use App\Models\Partner;
 use App\Models\Service;
 use App\Models\Features;
 use App\Models\HeroSection;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use App\Models\AdditionalService;
 use Illuminate\Support\Facades\DB;
@@ -32,7 +33,9 @@ class UserHomeController extends Controller
 
         $partners = Partner::where('is_active', true)->orderBy('order')->get();
 
-        return view('user.index', compact('heroSection', 'features', 'services', 'additionalServices', 'partners'));
+        $testimonials = Testimonial::where('is_active', 1)->orderBy('order', 'asc')->get();
+
+        return view('user.index', compact('heroSection', 'features', 'services', 'additionalServices', 'partners', 'testimonials'));
     }
 
     /**

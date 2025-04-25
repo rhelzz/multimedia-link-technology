@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\ServicesAdminController;
 use App\Http\Controllers\Admin\AdditionalServiceController;
 use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\TestimonialController;
 
 Route::resource('/', UserHomeController::class);
 
@@ -54,4 +55,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('partners', PartnerController::class);
+});
+
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('testimonials', TestimonialController::class);
 });

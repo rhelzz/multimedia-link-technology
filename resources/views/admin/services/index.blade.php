@@ -49,6 +49,7 @@
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-100">
                             <tr>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">ID</th>
                                 <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Name</th>
                                 <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Label</th>
                                 <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Price</th>
@@ -60,6 +61,7 @@
                         <tbody class="divide-y divide-gray-100 text-sm">
                             @forelse ($services as $service)
                                 <tr class="hover:bg-gray-50 transition">
+                                    <td class="px-6 py-4 font-medium text-gray-900">{{ $service->id }}</td>
                                     <td class="px-6 py-4 font-medium text-gray-900">{{ $service->name }}</td>
                                     <td class="px-6 py-4">{{ $service->label }}</td>
                                     <td class="px-6 py-4">{{ $service->price }}</td>
