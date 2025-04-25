@@ -2,13 +2,13 @@
 <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.1)] z-50">
     <div class="flex justify-around items-center p-2">  <!-- Mengurangi padding dari p-4 menjadi p-2 -->
         <!-- Home -->
-        <a href="#" class="flex flex-col items-center text-gray-600 hover:text-blue-600">
+        <a href="{{ route('home') }}/#" class="flex flex-col items-center text-gray-600 hover:text-blue-600">
             <i class="fas fa-home text-lg"></i> <!-- Mengurangi ukuran icon dari text-xl menjadi text-lg -->
             <span class="text-[10px] mt-0.5">Home</span> <!-- Mengurangi ukuran text dan margin top -->
         </a>
         
         <!-- Paket -->
-        <a href="#layanan" class="flex flex-col items-center text-gray-600 hover:text-blue-600">
+        <a href="{{ route('home') }}/#layanan" class="flex flex-col items-center text-gray-600 hover:text-blue-600">
             <i class="fas fa-briefcase text-lg"></i> <!-- Mengurangi ukuran icon -->
             <span class="text-[10px] mt-0.5">Layanan</span> <!-- Mengurangi ukuran text -->
         </a>
@@ -28,7 +28,7 @@
         </a>
         
         <!-- Contact -->
-        <a href="#kontak" class="flex flex-col items-center text-gray-600 hover:text-blue-600">
+        <a href="{{ route('home') }}/#kontak" class="flex flex-col items-center text-gray-600 hover:text-blue-600">
             <i class="fas fa-headset text-lg"></i> <!-- Mengurangi ukuran icon -->
             <span class="text-[10px] mt-0.5">Kontak</span> <!-- Mengurangi ukuran text -->
         </a>
@@ -40,27 +40,27 @@
     <div class="fixed bottom-20 left-4 right-4 bg-white rounded-xl shadow-xl p-3 transform transition-transform duration-300 translate-y-full"> <!-- Mengurangi padding dan jarak dari bottom -->
         <div class="grid grid-cols-3 gap-3"> <!-- Mengurangi gap -->
             <!-- Menu Items -->
-            <a href="#" class="flex flex-col items-center p-2 text-gray-600 hover:text-blue-600"> <!-- Mengurangi padding -->
+            <a href="{{ route('home') }}/#" class="flex flex-col items-center p-2 text-gray-600 hover:text-blue-600"> <!-- Mengurangi padding -->
                 <i class="fas fa-tag text-lg mb-1"></i> <!-- Mengurangi ukuran icon dan margin -->
                 <span class="text-xs">Promo</span> <!-- Mengurangi ukuran text -->
             </a>
-            <a href="#dukungan" class="flex flex-col items-center p-2 text-gray-600 hover:text-blue-600">
+            <a href="{{ route('home') }}/#dukungan" class="flex flex-col items-center p-2 text-gray-600 hover:text-blue-600">
                 <i class="fas fa-question-circle text-lg mb-1"></i>
                 <span class="text-xs">Bantuan</span>
             </a>
-            <a href="#member" class="flex flex-col items-center p-2 text-gray-600 hover:text-blue-600">
+            <a href="{{ route('home') }}/#member" class="flex flex-col items-center p-2 text-gray-600 hover:text-blue-600">
                 <i class="fas fa-user text-lg mb-1"></i>
                 <span class="text-xs">Member</span>
             </a>
-            <a href="#FAQ" class="flex flex-col items-center p-2 text-gray-600 hover:text-blue-600">
+            <a href="{{ route('home') }}/#FAQ" class="flex flex-col items-center p-2 text-gray-600 hover:text-blue-600">
                 <i class="fas fa-info-circle text-lg mb-1"></i>
                 <span class="text-xs">FAQ</span>
             </a>
-            <a href="#privacy" class="flex flex-col items-center p-2 text-gray-600 hover:text-blue-600">
+            <a href="{{ route('home') }}/#privacy" class="flex flex-col items-center p-2 text-gray-600 hover:text-blue-600">
                 <i class="fas fa-shield-alt text-lg mb-1"></i>
                 <span class="text-xs">Privacy</span>
             </a>
-            <a href="#terms" class="flex flex-col items-center p-2 text-gray-600 hover:text-blue-600">
+            <a href="{{ route('home') }}/#terms" class="flex flex-col items-center p-2 text-gray-600 hover:text-blue-600">
                 <i class="fas fa-file-contract text-lg mb-1"></i>
                 <span class="text-xs">Terms</span>
             </a>

@@ -43,7 +43,7 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-    <x-navbar></x-navbar>
+    <x-navbar-location></x-navbar-location>
     <x-navbar-mobile></x-navbar-mobile>
     
     <!-- Hero Banner Section - Diperbesar -->

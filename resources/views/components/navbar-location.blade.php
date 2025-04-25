@@ -17,12 +17,12 @@
             <nav id="navMenu" class="hidden md:flex items-center">
                 <div class="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0">
                     <div class="md:flex md:items-center md:space-x-5"> <!-- Mengubah space-x-8 menjadi space-x-5 -->
-                        <a href="#" 
+                        <a href="{{ route('home') }}/#" 
                         class="nav-link relative text-gray-800 md:text-white 
                                 hover:text-orange-500 transition-colors px-3 py-2">
                             <i class="fas fa-tag mr-2"></i>Promo
                         </a>
-                        <a href="#layanan" 
+                        <a href="{{ route('home') }}/#layanan" 
                         class="nav-link relative text-gray-800 md:text-white 
                                 hover:text-orange-500 transition-colors px-3 py-2">
                             <i class="fas fa-briefcase mr-2"></i>Layanan
@@ -32,17 +32,17 @@
                                 hover:text-orange-500 transition-colors px-3 py-2">
                             <i class="fas fa-map-marker-alt mr-2"></i>Lokasi Area
                         </a>
-                        <a href="#kontak" 
+                        <a href="{{ route('home') }}/#kontak" 
                         class="nav-link relative text-gray-800 md:text-white 
                                 hover:text-orange-500 transition-colors px-3 py-2">
                             <i class="fa-solid fa-address-book mr-2"></i>Kontak
                         </a>
-                        <a href="#dukungan" 
+                        <a href="{{ route('home') }}/#dukungan" 
                         class="nav-link relative text-gray-800 md:text-white 
                                 hover:text-orange-500 transition-colors px-3 py-2">
                             <i class="fas fa-headset mr-2"></i>Bantuan & Dukungan
                         </a>
-                        <a href="#member" 
+                        <a href="{{ route('home') }}/#member" 
                         class="bg-orange-500 text-white px-6 py-2 rounded-full 
                                 hover:bg-orange-600 transition-colors ml-3 inline-flex items-center">
                             <!-- Mengubah padding dan margin -->
