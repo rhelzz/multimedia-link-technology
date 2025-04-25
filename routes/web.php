@@ -5,6 +5,7 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\SubBranchController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\AreaLocationController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\User\UserHomeController;
@@ -60,4 +61,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('branches.sub-branches', SubBranchController::class)->parameters([
         'sub-branches' => 'subBranch'
     ]);
+});
+
+// Area Location routes
+Route::prefix('area-locations')->group(function () {
+    Route::get('/', [AreaLocationController::class, 'index'])->name('arealocations.index');
+    Route::get('/{id}/sub-branches', [AreaLocationController::class, 'showSubBranches'])->name('arealocations.subbranches');
+    Route::get('/map/{id}', [AreaLocationController::class, 'showMap'])->name('arealocations.map');
 });
