@@ -4,83 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Lokasi Cabang - Admin</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
-    <div class="container mx-auto px-4 py-8">
-        <div class="flex items-center mb-6">
-            <a href="{{ route('admin.branches.sub-branches.index', $branch->id) }}" class="text-gray-600 hover:text-gray-900 mr-4">
-                <i class="fas fa-arrow-left"></i> Kembali
-            </a>
-            <h1 class="text-2xl font-bold text-gray-800">Edit Lokasi untuk Cabang: {{ $branch->name }}</h1>
-        </div>
+<body class="bg-gray-100 text-gray-800">
+    <div class="min-h-screen" x-data="{ mobileMenuOpen: false }">
+        <x-sidebar-admin></x-sidebar-admin>
 
-        <div class="bg-white rounded-lg shadow overflow-hidden">
-            <div class="p-6">
-                <form action="{{ route('admin.branches.sub-branches.update', [$branch->id, $subBranch->id]) }}" method="POST">
+        <main class="lg:pl-64 py-10 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto">
+                <!-- Page Title + Back -->
+                <div class="flex items-center justify-between mb-10">
+                    <div>
+                        <h1 class="text-3xl font-bold tracking-tight">Edit Lokasi Cabang</h1>
+                        <p class="text-gray-500 text-sm mt-1">Untuk cabang: {{ $branch->name }}</p>
+                    </div>
+                    <a href="{{ route('admin.branches.sub-branches.index', $branch->id) }}"
+                       class="text-sm inline-flex items-center text-gray-600 hover:text-blue-600 transition">
+                        ← Kembali
+                    </a>
+                </div>
+
+                <!-- Form -->
+                <form action="{{ route('admin.branches.sub-branches.update', [$branch->id, $subBranch->id]) }}" method="POST"
+                      class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 transition duration-300 hover:shadow-md">
                     @csrf
                     @method('PUT')
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                            <label for="subdistrict" class="block text-sm font-medium text-gray-700 mb-1">Kecamatan <span class="text-red-600">*</span></label>
-                            <input type="text" name="subdistrict" id="subdistrict" class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 @error('subdistrict') border-red-500 @enderror" value="{{ old('subdistrict', $subBranch->subdistrict) }}" required>
-                            @error('subdistrict')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div>
-                            <label for="village" class="block text-sm font-medium text-gray-700 mb-1">Kelurahan <span class="text-red-600">*</span></label>
-                            <input type="text" name="village" id="village" class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 @error('village') border-red-500 @enderror" value="{{ old('village', $subBranch->village) }}" required>
-                            @error('village')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
-                    </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                            <label for="postal_code" class="block text-sm font-medium text-gray-700 mb-1">Kode Pos <span class="text-red-600">*</span></label>
-                            <input type="text" name="postal_code" id="postal_code" class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 @error('postal_code') border-red-500 @enderror" value="{{ old('postal_code', $subBranch->postal_code) }}" required>
-                            @error('postal_code')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div>
-                            <label for="whatsapp_number" class="block text-sm font-medium text-gray-700 mb-1">Nomor WhatsApp <span class="text-red-600">*</span></label>
-                            <input type="text" name="whatsapp_number" id="whatsapp_number" class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 @error('whatsapp_number') border-red-500 @enderror" value="{{ old('whatsapp_number', $subBranch->whatsapp_number) }}" placeholder="contoh: 6285850102226" required>
-                            @error('whatsapp_number')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
-                    </div>
-
+                    <!-- Kecamatan -->
                     <div class="mb-6">
-                        <label for="embed_location_code" class="block text-sm font-medium text-gray-700 mb-1">Embed Kode Lokasi (Google Maps)</label>
-                        <textarea name="embed_location_code" id="embed_location_code" rows="4" class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 @error('embed_location_code') border-red-500 @enderror" placeholder='<iframe src="https://www.google.com/maps/embed?..." width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>'>{{ old('embed_location_code', $subBranch->embed_location_code) }}</textarea>
-                        <p class="mt-1 text-sm text-gray-500">Masukkan kode embed dari Google Maps</p>
-                        @error('embed_location_code')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        <label for="subdistrict" class="block text-sm font-medium text-gray-700 mb-2">Kecamatan</label>
+                        <input type="text" id="subdistrict" name="subdistrict" value="{{ old('subdistrict', $subBranch->subdistrict) }}"
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+                               placeholder="Masukkan nama kecamatan" required>
+                        @error('subdistrict')
+                            <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
                         @enderror
                     </div>
 
+                    <!-- Kelurahan -->
+                    <div class="mb-6">
+                        <label for="village" class="block text-sm font-medium text-gray-700 mb-2">Kelurahan</label>
+                        <input type="text" id="village" name="village" value="{{ old('village', $subBranch->village) }}"
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+                               placeholder="Masukkan nama kelurahan" required>
+                        @error('village')
+                            <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Kode Pos -->
+                    <div class="mb-6">
+                        <label for="postal_code" class="block text-sm font-medium text-gray-700 mb-2">Kode Pos</label>
+                        <input type="text" id="postal_code" name="postal_code" value="{{ old('postal_code', $subBranch->postal_code) }}"
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+                               placeholder="Masukkan kode pos" required>
+                        @error('postal_code')
+                            <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Alamat Lengkap -->
+                    <div class="mb-6">
+                        <label for="address" class="block text-sm font-medium text-gray-700 mb-2">Alamat Lengkap</label>
+                        <textarea id="address" name="address" rows="3"
+                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+                                  placeholder="Masukkan alamat lengkap" required>{{ old('address', $subBranch->address) }}</textarea>
+                        @error('address')
+                            <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Nomor WhatsApp -->
+                    <div class="mb-6">
+                        <label for="whatsapp_number" class="block text-sm font-medium text-gray-700 mb-2">Nomor WhatsApp</label>
+                        <input type="text" id="whatsapp_number" name="whatsapp_number" value="{{ old('whatsapp_number', $subBranch->whatsapp_number) }}"
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+                               placeholder="Contoh: 628123456789" required>
+                        @error('whatsapp_number')
+                            <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Google Maps Link -->
+                    <div class="mb-6">
+                        <label for="google_maps_link" class="block text-sm font-medium text-gray-700 mb-2">Link Google Maps</label>
+                        <input type="url" id="google_maps_link" name="google_maps_link" value="{{ old('google_maps_link', $subBranch->google_maps_link) }}"
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+                               placeholder="https://maps.google.com/...">
+                        @error('google_maps_link')
+                            <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Status -->
                     <div class="mb-6">
                         <label class="flex items-center">
-                            <input type="checkbox" name="is_active" value="1" {{ old('is_active', $subBranch->is_active) ? 'checked' : '' }} class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                            <span class="ml-2 text-sm text-gray-700">Aktif</span>
+                            <input type="checkbox" name="is_active" 
+                                   class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   {{ old('is_active', $subBranch->is_active) ? 'checked' : '' }}>
+                            <span class="ml-2 text-sm text-gray-600">Aktif</span>
                         </label>
                     </div>
 
-                    <div class="flex justify-end">
-                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                            <i class="fas fa-save mr-1"></i> Perbarui
+                    <!-- Action Buttons -->
+                    <div class="mt-8 flex justify-end">
+                        <button type="submit"
+                                class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
+                            Simpan Perubahan
                         </button>
                     </div>
                 </form>
+
+                @if($errors->any())
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mt-4">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
-        </div>
+        </main>
     </div>
 </body>
 </html>

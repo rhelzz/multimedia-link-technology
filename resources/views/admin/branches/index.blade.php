@@ -4,84 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manajemen Cabang - Admin</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
-    <div class="container mx-auto px-4 py-8">
-        <div class="flex justify-between items-center mb-6">
-            <h1 class="text-2xl font-bold text-gray-800">Manajemen Cabang</h1>
-            <a href="{{ route('admin.branches.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center">
-                <i class="fas fa-plus mr-2"></i> Tambah Cabang
-            </a>
-        </div>
+<body class="bg-gray-50 text-gray-800">
+    <div class="min-h-screen" x-data="{ mobileMenuOpen: false }">
+        <x-sidebar-admin></x-sidebar-admin>
 
-        @if(session('success'))
-        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4 relative" role="alert">
-            <p>{{ session('success') }}</p>
-            <button class="absolute top-0 right-0 mt-4 mr-4" onclick="this.parentElement.style.display='none'">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        @endif
+        <main class="lg:pl-64 py-10 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-900">Manajemen Cabang</h1>
+                        <p class="text-sm text-gray-500 mt-1">Daftar semua cabang yang tersedia dalam sistem.</p>
+                    </div>
+                    <a href="{{ route('admin.branches.create') }}"
+                        class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow text-sm font-medium transition">
+                        + Tambah Cabang
+                    </a>
+                </div>
 
-        <div class="bg-white rounded-lg shadow overflow-hidden">
-            <div class="p-4 bg-gray-50 border-b border-gray-200">
-                <h2 class="text-lg font-semibold text-gray-700">Daftar Cabang</h2>
+                @if (session('success'))
+                    <div x-data="{ show: true }" x-show="show"
+                        x-transition
+                        class="fixed top-5 right-5 bg-green-100 border border-green-300 text-green-800 px-4 py-3 rounded-lg shadow-lg z-50 flex items-center justify-between w-full max-w-sm">
+                        <span>{{ session('success') }}</span>
+                        <button @click="show = false" class="ml-4 text-xl font-bold leading-none">&times;</button>
+                    </div>
+                @endif
+
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">No</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Nama Cabang</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Status</th>
+                                <th class="px-6 py-3 text-center text-sm font-semibold text-gray-700">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 text-sm">
+                            @foreach($branches as $key => $branch)
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="px-6 py-4 text-gray-500">
+                                        {{ $key + 1 }}
+                                    </td>
+                                    <td class="px-6 py-4 font-medium text-gray-900">
+                                        {{ $branch->name }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        @if($branch->is_active)
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                Aktif
+                                            </span>
+                                        @else
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                                Tidak Aktif
+                                            </span>
+                                        @endif
+                                    </td>
+                                    <td class="px-6 py-4 text-center whitespace-nowrap">
+                                        <div class="flex items-center justify-center gap-3">
+                                            <a href="{{ route('admin.branches.edit', $branch->id) }}"
+                                               class="text-blue-600 hover:underline">✏️ Edit</a>
+                                            <form action="{{ route('admin.branches.destroy', $branch->id) }}"
+                                                  method="POST" class="inline-block"
+                                                  onsubmit="return confirm('Yakin ingin menghapus cabang ini?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="text-red-600 hover:underline">🗑️ Hapus</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-4">
+                    {{ $branches->links() }}
+                </div>
             </div>
-            <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Cabang</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        @foreach($branches as $key => $branch)
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {{ $key + 1 }}
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                {{ $branch->name }}
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                @if($branch->is_active)
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                        Aktif
-                                    </span>
-                                @else
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                                        Tidak Aktif
-                                    </span>
-                                @endif
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                <a href="{{ route('admin.branches.edit', $branch->id) }}" class="text-yellow-600 hover:text-yellow-900 mr-3">
-                                    <i class="fas fa-edit"></i> Edit
-                                </a>
-                                <form action="{{ route('admin.branches.destroy', $branch->id) }}" method="POST" class="inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Yakin ingin menghapus cabang ini?')">
-                                        <i class="fas fa-trash"></i> Hapus
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-            <div class="px-4 py-3 border-t border-gray-200">
-                {{ $branches->links() }}
-            </div>
-        </div>
+        </main>
     </div>
 </body>
 </html>

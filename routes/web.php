@@ -16,24 +16,23 @@ use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\ServicesAdminController;
 use App\Http\Controllers\Admin\AdditionalServiceController;
 
-Route::resource('/', UserHomeController::class);
+// User home route - better to use Route::get instead of resource for root URL
+Route::get('/', [UserHomeController::class, 'index'])->name('home');
 
-// Admin Routes
+// Admin Authentication Routes (public)
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
     Route::post('/login', [AdminAuthController::class, 'login']);
     Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
-
-    // Protected admin routes
-    Route::middleware(['auth', 'admin'])->group(function () {
-        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    });
 });
 
-Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
-    Route::resource('hero-section', HeroSectionController::class);
+// All protected admin routes under one middleware group
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    // Dashboard
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     
-    // Slider routes
+    // Hero Section & Sliders
+    Route::resource('hero-section', HeroSectionController::class);
     Route::post('hero-section/{heroSection}/sliders', [HeroSliderController::class, 'store'])
         ->name('hero-section.sliders.store');
     Route::delete('hero-section/{heroSection}/sliders/{slider}', [HeroSliderController::class, 'destroy'])
@@ -42,41 +41,22 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
         ->name('hero-section.sliders.toggle');
     Route::get('hero-section/{heroSection}/sliders', [HeroSliderController::class, 'index'])
         ->name('hero-section.sliders.index');
-});
-
-Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
-    // Routes for Features
-    Route::resource('features', FeaturesController::class);
-});
-
-Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
-    Route::resource('services', ServicesAdminController::class);
-});
-
-Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::resource('additional-services', AdditionalServiceController::class);
-});
-
-Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::resource('partners', PartnerController::class);
-});
-
-Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::resource('testimonials', TestimonialController::class);
-});
-
-Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::resource('faqs', FaqController::class);
-});
-
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::resource('contacts', ContactController::class);
-});
-
-Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
-    Route::resource('branches', BranchController::class);
     
-    // Rute nested untuk sub cabang
+    // Features
+    Route::resource('features', FeaturesController::class);
+    
+    // Services
+    Route::resource('services', ServicesAdminController::class);
+    Route::resource('additional-services', AdditionalServiceController::class);
+    
+    // Other resources
+    Route::resource('partners', PartnerController::class);
+    Route::resource('testimonials', TestimonialController::class);
+    Route::resource('faqs', FaqController::class);
+    Route::resource('contacts', ContactController::class);
+    
+    // Branches and Sub-branches
+    Route::resource('branches', BranchController::class);
     Route::resource('branches.sub-branches', SubBranchController::class)->parameters([
         'sub-branches' => 'subBranch'
     ]);
