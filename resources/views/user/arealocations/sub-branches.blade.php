@@ -48,8 +48,8 @@
 <body class="bg-gray-100 text-gray-800">
 
     <!-- Header -->
-    <header class="bg-primary text-white py-6 shadow-md">
-        <div class="max-w-screen-lg mx-auto px-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <header class="bg-primary text-white py-4 sm:py-6 shadow-md">
+        <div class="max-w-screen-lg mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
                 <h2 class="text-2xl sm:text-3xl font-semibold flex items-center">
                     <i class="fas fa-map-marker-alt mr-2 text-xl"></i> Detail Cabang: {{ $branch->name }}
@@ -57,41 +57,41 @@
                 <p class="text-sm mt-1 opacity-80">Pilih lokasi terdekat dengan Anda</p>
             </div>
             <a href="{{ route('arealocations.index') }}" 
-               class="flex items-center border border-white text-white px-4 py-2 rounded-lg hover:bg-white hover:text-primary transition text-sm">
+               class="flex items-center border border-white text-white px-4 py-2 rounded-lg hover:bg-white hover:text-primary transition text-xs sm:text-sm">
                 <i class="fas fa-arrow-left mr-2"></i> Kembali ke Daftar Cabang
             </a>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-screen-lg mx-auto px-4 mb-16 mt-6">
+    <main class="max-w-screen-lg mx-auto px-4 sm:px-6 mb-16 mt-6">
         <div class="bg-white rounded-xl shadow-md overflow-hidden">
-            <div class="overflow-x-auto">
+            <div class="overflow-x-auto w-full">
                 <table class="min-w-full divide-y divide-gray-200 text-sm">
                     <thead class="bg-gray-100">
                         <tr>
-                            <th class="px-6 py-3 text-left font-semibold text-gray-600 uppercase">#</th>
-                            <th class="px-6 py-3 text-left font-semibold text-gray-600 uppercase">Kecamatan</th>
-                            <th class="px-6 py-3 text-left font-semibold text-gray-600 uppercase">Kelurahan</th>
-                            <th class="px-6 py-3 text-left font-semibold text-gray-600 uppercase">Kode Pos</th>
-                            <th class="px-6 py-3 text-center font-semibold text-gray-600 uppercase">Aksi</th>
+                            <th class="px-4 sm:px-6 py-3 text-left font-semibold text-gray-600 uppercase text-xs">#</th>
+                            <th class="px-4 sm:px-6 py-3 text-left font-semibold text-gray-600 uppercase text-xs">Kecamatan</th>
+                            <th class="px-4 sm:px-6 py-3 text-left font-semibold text-gray-600 uppercase text-xs">Kelurahan</th>
+                            <th class="px-4 sm:px-6 py-3 text-left font-semibold text-gray-600 uppercase text-xs">Kode Pos</th>
+                            <th class="px-4 sm:px-6 py-3 text-center font-semibold text-gray-600 uppercase text-xs">Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         @forelse($subBranches as $key => $subBranch)
                         <tr class="hover:bg-gray-50">
-                            <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $key + 1 }}</td>
-                            <td class="px-6 py-4 font-medium">{{ $subBranch->subdistrict }}</td>
-                            <td class="px-6 py-4">{{ $subBranch->village }}</td>
-                            <td class="px-6 py-4">{{ $subBranch->postal_code }}</td>
-                            <td class="px-6 py-4 text-center">
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 justify-center">
+                            <td class="px-4 sm:px-6 py-4 text-gray-700">{{ $key + 1 }}</td>
+                            <td class="px-4 sm:px-6 py-4 font-medium">{{ $subBranch->subdistrict }}</td>
+                            <td class="px-4 sm:px-6 py-4">{{ $subBranch->village }}</td>
+                            <td class="px-4 sm:px-6 py-4">{{ $subBranch->postal_code }}</td>
+                            <td class="px-4 sm:px-6 py-4 text-center">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                     <a href="{{ $subBranch->getWhatsAppLinkAttribute() }}" 
-                                       class="bg-primary hover:bg-primaryDark text-white py-1.5 px-4 rounded-lg text-sm flex items-center justify-center transition">
+                                       class="w-full bg-primary hover:bg-primaryDark text-white py-1.5 px-4 rounded-lg text-xs sm:text-sm flex items-center justify-center transition">
                                         <i class="fab fa-whatsapp mr-1"></i> Pasang
                                     </a>
                                     <button type="button" 
-                                            class="bg-success hover:bg-successDark text-white py-1.5 px-4 rounded-lg text-sm flex items-center justify-center transition"
+                                            class="w-full bg-success hover:bg-successDark text-white py-1.5 px-4 rounded-lg text-xs sm:text-sm flex items-center justify-center transition"
                                             onclick="showMap('{{ $subBranch->id }}', '{{ $subBranch->subdistrict }}', '{{ $subBranch->village }}')">
                                         <i class="fas fa-map mr-1"></i> Lihat Peta
                                     </button>
@@ -111,7 +111,7 @@
             </div>
 
             <!-- Pagination -->
-            <div class="py-4 px-6 border-t">
+            <div class="py-4 px-4 sm:px-6 border-t">
                 {{ $subBranches->links() }}
             </div>
         </div>
@@ -119,24 +119,24 @@
 
     <!-- Map Modal -->
     <div id="mapModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden">
-        <div class="mx-auto my-10 bg-white rounded-xl shadow-lg w-full max-w-4xl animate-fade-in overflow-hidden">
+        <div class="mx-2 sm:mx-auto my-10 bg-white rounded-xl shadow-lg w-full max-w-4xl animate-fade-in overflow-hidden">
             <!-- Header -->
-            <div class="bg-primary text-white px-6 py-4 flex justify-between items-center">
-                <h3 class="text-lg font-semibold" id="mapModalLabel">Lokasi di Peta</h3>
+            <div class="bg-primary text-white px-4 sm:px-6 py-4 flex justify-between items-center">
+                <h3 class="text-base sm:text-lg font-semibold" id="mapModalLabel">Lokasi di Peta</h3>
                 <button type="button" class="text-white hover:text-red-300 text-2xl font-bold" onclick="closeModal()">
                     &times;
                 </button>
             </div>
 
             <!-- Map Content -->
-            <div class="p-6">
-                <div id="mapContainer" class="w-full aspect-video rounded-lg border border-gray-200 shadow-inner overflow-hidden"></div>
+            <div class="p-4 sm:p-6">
+                <div id="mapContainer" class="w-full aspect-video sm:aspect-[16/9] rounded-lg border border-gray-200 shadow-inner overflow-hidden"></div>
             </div>
 
             <!-- Footer -->
-            <div class="px-6 py-4 bg-gray-50 flex justify-end">
+            <div class="px-4 sm:px-6 py-4 bg-gray-50 flex justify-end">
                 <button type="button" 
-                        class="bg-gray-500 hover:bg-gray-600 text-white font-medium px-6 py-2 rounded-lg transition"
+                        class="bg-gray-500 hover:bg-gray-600 text-white font-medium px-4 sm:px-6 py-2 rounded-lg transition"
                         onclick="closeModal()">
                     Tutup
                 </button>
