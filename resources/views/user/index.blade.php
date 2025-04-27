@@ -206,10 +206,12 @@
                                 @endforeach
                             </ul>
                             
-                            <button class="w-full bg-blue-600 text-white py-3 rounded-lg 
+                            <a href="{{ route('arealocations.index') }}">
+                                <button class="w-full bg-blue-600 text-white py-3 rounded-lg 
                                         hover:bg-blue-700 transition-colors">
-                                Pilih Paket
-                            </button>
+                                    Pilih Paket
+                                </button>
+                            </a>
                         </div>
                     @empty
                         <div class="col-span-4 text-center py-8">
