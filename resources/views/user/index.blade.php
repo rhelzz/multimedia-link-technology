@@ -600,6 +600,20 @@
                                         placeholder="08xxxxxxxxxx">
                                 </div>
                                 
+                                <!-- Address Field (Added) -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        Alamat
+                                    </label>
+                                    <textarea 
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 
+                                            focus:ring-2 focus:ring-blue-600 
+                                            focus:border-transparent transition-all"
+                                        rows="2"
+                                        placeholder="Masukkan alamat lengkap Anda">
+                                    </textarea>
+                                </div>
+                                
                                 <!-- Message Field -->
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">
